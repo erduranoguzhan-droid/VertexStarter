@@ -5,21 +5,21 @@ import Link from "next/link";
 import { List, X, ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 import { cn } from "@/lib/utils";
 import { site } from "@/lib/site";
-
-const links = [
-  { href: "/#hizmetler", label: "Hizmetler" },
-  { href: "/#sektorler", label: "Sektörler" },
-  { href: "/#surec", label: "Süreç" },
-  { href: "/#vakalar", label: "Vakalar" },
-  { href: "/blog", label: "Blog" },
-  { href: "/#iletisim", label: "İletişim" },
-];
+import { LocaleSwitcher } from "@/components/locale-switcher";
+import type { Dict, Locale } from "@/i18n/messages";
 
 function Wordmark() {
   return (
     <Link href="/" className="flex items-center gap-2" aria-label={site.name}>
       <svg viewBox="0 0 24 24" className="size-6 text-accent" aria-hidden="true">
-        <path d="M3 4 L12 20 L21 4" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinejoin="round" strokeLinecap="round" />
+        <path
+          d="M3 4 L12 20 L21 4"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.4"
+          strokeLinejoin="round"
+          strokeLinecap="round"
+        />
       </svg>
       <span className="text-lg font-semibold tracking-tight">
         Vertex<span className="text-accent">Starter</span>
@@ -28,7 +28,7 @@ function Wordmark() {
   );
 }
 
-export function Navbar() {
+export function Navbar({ dict, locale }: { dict: Dict["nav"]; locale: Locale }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const sentinel = useRef<HTMLDivElement>(null);
@@ -61,7 +61,7 @@ export function Navbar() {
           <Wordmark />
 
           <nav className="hidden items-center gap-7 lg:flex">
-            {links.map((l) => (
+            {dict.links.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
@@ -72,31 +72,37 @@ export function Navbar() {
             ))}
           </nav>
 
-          <Link
-            href="/#iletisim"
-            className="group hidden items-center gap-1.5 rounded-full bg-accent px-4 py-2 text-sm font-medium text-accent-ink transition-colors hover:bg-accent-strong lg:inline-flex"
-          >
-            Görüşme planla
-            <ArrowUpRight
-              weight="bold"
-              className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-            />
-          </Link>
+          <div className="hidden items-center gap-3 lg:flex">
+            <LocaleSwitcher locale={locale} />
+            <Link
+              href="/#iletisim"
+              className="group inline-flex items-center gap-1.5 rounded-full bg-accent px-4 py-2 text-sm font-medium text-accent-ink transition-colors hover:bg-accent-strong"
+            >
+              {dict.cta}
+              <ArrowUpRight
+                weight="bold"
+                className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              />
+            </Link>
+          </div>
 
-          <button
-            onClick={() => setOpen((v) => !v)}
-            className="grid size-10 place-items-center rounded-input text-fg ring-line lg:hidden"
-            aria-label={open ? "Menüyü kapat" : "Menüyü aç"}
-            aria-expanded={open}
-          >
-            {open ? <X className="size-5" /> : <List className="size-5" />}
-          </button>
+          <div className="flex items-center gap-2 lg:hidden">
+            <LocaleSwitcher locale={locale} />
+            <button
+              onClick={() => setOpen((v) => !v)}
+              className="grid size-10 place-items-center rounded-input text-fg ring-line"
+              aria-label={open ? dict.menuClose : dict.menuOpen}
+              aria-expanded={open}
+            >
+              {open ? <X className="size-5" /> : <List className="size-5" />}
+            </button>
+          </div>
         </div>
 
         {open && (
           <div className="glass border-t border-line px-5 py-3 lg:hidden">
             <nav className="grid">
-              {links.map((l) => (
+              {dict.links.map((l) => (
                 <Link
                   key={l.href}
                   href={l.href}
@@ -111,7 +117,7 @@ export function Navbar() {
                 onClick={() => setOpen(false)}
                 className="mt-3 inline-flex items-center justify-center gap-1.5 rounded-full bg-accent px-4 py-3 text-sm font-medium text-accent-ink"
               >
-                Görüşme planla
+                {dict.cta}
                 <ArrowUpRight weight="bold" className="size-4" />
               </Link>
             </nav>

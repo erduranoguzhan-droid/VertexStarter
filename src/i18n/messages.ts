@@ -1,0 +1,435 @@
+export type Locale = "tr" | "en";
+export const locales: Locale[] = ["tr", "en"];
+export const defaultLocale: Locale = "tr";
+
+const tr = {
+  nav: {
+    links: [
+      { href: "/#hizmetler", label: "Hizmetler" },
+      { href: "/#sektorler", label: "Sektörler" },
+      { href: "/#surec", label: "Süreç" },
+      { href: "/#vakalar", label: "Vakalar" },
+      { href: "/blog", label: "Blog" },
+      { href: "/#iletisim", label: "İletişim" },
+    ],
+    cta: "Görüşme planla",
+    menuOpen: "Menüyü aç",
+    menuClose: "Menüyü kapat",
+  },
+  hero: {
+    eyebrow: "AI BÜYÜME STÜDYOSU",
+    titleA: "AI ve Otomasyon Sistemleriyle Şirketinizi",
+    titleAccent: "Büyütüyoruz.",
+    subtitle:
+      "Şirketinizin verisini büyüme sistemlerine dönüştürüyoruz. Yapay zeka ve otomasyonla satış, operasyon ve müşteri kazanımını ölçeklendiriyoruz.",
+    primary: "Görüşme planla",
+    secondary: "Hizmetleri gör",
+  },
+  stats: [
+    { k: "12", v: "Uçtan uca hizmet" },
+    { k: "7", v: "Sektör çözümü" },
+    { k: "7/24", v: "Çalışan AI sistemleri" },
+  ],
+  logos: { label: "Büyümesine destek olduğumuz markalar" },
+  services: {
+    headA: "Hizmet",
+    headAccent: "lerimiz",
+    sub: "Veriyi büyümeye çeviren uçtan uca hizmetler. Yapay zeka, otomasyon ve performans pazarlamasını tek bir büyüme sisteminde birleştiriyoruz.",
+    items: [
+      {
+        title: "Shopify E-Ticaret Mağaza Kurulumu",
+        desc: "Markanıza özel, yüksek dönüşüm odaklı Shopify mağazaları tasarlıyor; Tüm teknik altyapıyı, ödeme ve kargo entegrasyonlarını tamamlayarak mağazanızı birlikte çalıştırmayı ve kullanıma hazır hale getirmenizi sağlıyoruz.",
+      },
+      {
+        title: "Yapay Zeka Otomasyon Sistemleri",
+        desc: "İşinizi ayrıntılarıyla yapay zeka destekli otomasyonlarla dijitalleştiriyor, yükünüzü izliyoruz işlemlerinizi artırıyor.",
+      },
+      {
+        title: "Web Tasarımı ve Geliştirme",
+        desc: "Modern, hızlı ve kullanıcı deneyimi odaklı web siteleri geliştirerek markanızın dijitalleştirilmiş prestijini güçlendiriyoruz.",
+      },
+      {
+        title: "Meta Reklam Yönetimi",
+        desc: "Facebook ve Instagram reklam kampanyalarınızı veri odaklı stratejilerle yönetiyor, daha düşük maliyetle daha yüksek dönüşüm elde edilebilir.",
+      },
+      {
+        title: "Google Ads Yönetimi",
+        desc: "Google Arama, Alışveriş, YouTube ve Performance Max reklamlarını optimize ederek kaliteli müşteri politikaları oluşturuyoruz.",
+      },
+      {
+        title: "SEO ve İçerik Pazarlaması",
+        desc: "Arama motorlarında görünürlüğü artırılıyor, organik trafik ve sürdürülebilir müşteri erişimi yapılabilir.",
+      },
+      {
+        title: "AI İçerik ve Video Üretimi",
+        desc: "Yapay zekâ ile reklam kreatifleri, ürün görselleri, UGC videoları, sosyal medya içerikleri ve pazarlama faaliyetlerini üretiyoruz.",
+      },
+      {
+        title: "CRM ve Satış Otomasyonu",
+        desc: "Teklif, müşteri takibi, satış seçenekleri ve CRM altyapınızı otomatikleştirerek satış hizmetlerimizin kapsamını genişletiyoruz.",
+      },
+      {
+        title: "E-Posta ve WhatsApp Otomasyonları",
+        desc: "Müşteri yolculuğunu otomatikleştiren e-posta, SMS ve WhatsApp senaryoları kurarak tekrar satış oranlarını yükseltiyoruz.",
+      },
+      {
+        title: "Marka ve Büyüme Stratejisi",
+        desc: "Markanızı rakiplerinizden farklı olacak, teklifler ve büyüme sistemi geliştiriyoruz.",
+      },
+      {
+        title: "Dönüşüm Oranı Optimizasyonu (CRO)",
+        desc: "Web sitenizi ve satış işlemlerinizi analiz ederek daha fazla ziyaretçiyi bir araya getirerek dönüşümler gerçekleştiriyoruz.",
+      },
+      {
+        title: "Analitik & Performans Raporu",
+        desc: "Tüm pazarlama faaliyetlerinizi gerçek zamanlı olarak analiz ediyor, veriye dayalı büyüme kararları sunuyor.",
+      },
+    ],
+  },
+  problem: {
+    heading: "Veriniz var, ama sistem yok.",
+    sub: "Çoğu şirket veriye sahip; sorun onu kullanılabilir bir büyüme sistemine çevirememek. İşte fark.",
+    nowTitle: "Şu an yaşadıklarınız",
+    withTitle: "VertexStarter ile",
+    problems: [
+      { t: "Dağınık veri", d: "Veriniz farklı paneller ve tablolarda parçalanmış durumda." },
+      { t: "Kaçan müşteriler", d: "Geç dönülen lead'ler sessizce rakibe gidiyor." },
+      { t: "Verimsiz operasyonlar", d: "Süreçler birbirine bağlı değil, her şey kopuk ilerliyor." },
+      { t: "Manuel işler", d: "Ekibiniz değer üretmek yerine veri girişiyle uğraşıyor." },
+      { t: "Takip edilmeyen süreçler", d: "Hangi adımın tıkandığı kimse tarafından görülmüyor." },
+      { t: "Satış kayıpları", d: "Hangi kanalın kâr getirdiği ölçülemiyor." },
+    ],
+    solutions: [
+      { t: "Tek veri kaynağı", d: "Tüm verinizi tek bir sistemde toplar, görünür kılarız." },
+      { t: "Otomatik takip", d: "Her lead'i yakalayan otomatik akışlar kurarız." },
+      { t: "Bağlı operasyon", d: "Süreçleri uçtan uca birbirine bağlarız." },
+      { t: "İşleri otomasyona devret", d: "Tekrar eden işleri kurallara bağlarız." },
+      { t: "Canlı görünürlük", d: "Her adımı gerçek zamanlı izlenebilir hale getiririz." },
+      { t: "Ölçülebilir satış", d: "Hangi kanalın kâr getirdiğini netleştiririz." },
+    ],
+  },
+  industriesSection: {
+    heading: "Her sektör için özel sistemler.",
+    sub: "Sektörünüzün diline ve operasyonuna göre kurulan veri ve otomasyon çözümleri.",
+    explore: "İncele",
+    ctaTitle: "Sektörünüz listede yok mu?",
+    ctaAction: "Size özel kuralım",
+  },
+  process: {
+    heading: "Veriden ölçeğe, net bir süreç.",
+    sub: "Dağınık veriyi çalışan bir büyüme sistemine dönüştüren dört adım.",
+    steps: [
+      { name: "Veriyi Analiz Et", desc: "Mevcut verinizi, araçlarınızı ve süreçlerinizi inceleyip büyüme fırsatlarını çıkarırız." },
+      { name: "Sistemi Tasarla", desc: "Şirketinize özel veri ve otomasyon mimarisini ölçülebilir hedeflerle tasarlarız." },
+      { name: "Otomasyonu Kur", desc: "Sistemleri kurar, mevcut araçlarınıza bağlar ve ekibinizi devreye alacak şekilde eğitiriz." },
+      { name: "Şirketi Ölçeklendir", desc: "Sonuçları gerçek zamanlı izler, sürekli iyileştirir ve kazanan sistemleri ölçeklendiririz." },
+    ],
+  },
+  cases: {
+    heading: "Ölçülebilir sonuçlar.",
+    sub: "Her projeyi tek bir ölçütle değerlendiririz: gerçek iş etkisi. Aşağıdaki rakamlar örnek senaryolardır.",
+    items: [
+      { tag: "E-Ticaret", title: "Shopify mağazasında AI destekli dönüşüm optimizasyonu", metric: "+182%", metricLabel: "Dönüşüm oranı" },
+      { tag: "B2B SaaS", title: "Çok kanallı AI satış outreach", metric: "3.4×", metricLabel: "Nitelikli görüşme" },
+      { tag: "Performans", title: "Meta ve Google Ads yeniden yapısı", metric: "-46%", metricLabel: "Edinme maliyeti" },
+      { tag: "Otomasyon", title: "n8n ile operasyon otomasyonu", metric: "120s+", metricLabel: "Haftalık kazanç" },
+      { tag: "Yapay Zeka", title: "7/24 AI sesli asistan", metric: "%92", metricLabel: "Otomatik çözüm" },
+      { tag: "İçerik", title: "AI içerik üretim hattı", metric: "8×", metricLabel: "Üretim hızı" },
+    ],
+  },
+  about: {
+    heading: "Teknolojiyi büyümeye çeviren ekip.",
+    p1: "VertexStarter, yapay zeka, otomasyon ve veri sistemlerini birleştirerek şirketlerin verisini kullanılabilir büyüme sistemlerine dönüştürür. Trend peşinde koşmak yerine işinizde gerçek etki yaratan sistemler kurarız.",
+    p2: "Amacımız net: süreçlerinizi otomatikleştirmek, maliyeti düşürmek ve geliri sürdürülebilir biçimde artırmak.",
+    imgAlt: "VertexStarter ekibinden bir çalışma anı",
+    pillars: [
+      { title: "Davranışsal psikoloji", desc: "İnsan kararını anlayan, daha ikna edici deneyimler kurarız." },
+      { title: "Ölçülebilir sonuç", desc: "Her sistemi net KPI'larla kurar, tahminle değil veriyle ilerleriz." },
+      { title: "Gömülü yapay zeka", desc: "AI'ı süs değil, süreçlerinizde çalışan bir katman yaparız." },
+      { title: "Uçtan uca süreç", desc: "Stratejiden kuruluma ve eğitime tüm yolculuğu üstleniriz." },
+    ],
+  },
+  faq: {
+    heading: "Sık sorulan sorular.",
+    items: [
+      { q: "Veri sistemleri kurmak için hazır bir altyapıya ihtiyacım var mı?", a: "Hayır. Mevcut araçlarınız ne olursa olsun veriyi tek bir sistemde toplayıp kullanılabilir hale getiririz. Sıfırdan da kurabiliriz." },
+      { q: "Süreç ne kadar sürüyor?", a: "Kapsamı görüşmede netleştiririz. İlk otomasyonları genelde birkaç hafta içinde devreye alır, ardından adım adım ölçeklendiririz." },
+      { q: "Hangi sektörlerle çalışıyorsunuz?", a: "E-ticaret, sağlık, gayrimenkul, restoran, eğitim, üretim ve lojistik başta olmak üzere veriyle büyüyebilen her sektörle çalışırız." },
+      { q: "Kurduğunuz sistemleri biz mi yöneteceğiz?", a: "İsteğinize bağlı. Ekibinizi eğitip yönetimi devredebilir ya da sürekli destekle sistemleri biz işletebiliriz." },
+      { q: "Yapay zeka çözümleri güvenli mi?", a: "Verinizi izinli ve kontrollü akışlarda kullanırız. Sistemleri şeffaf, denetlenebilir ve sizin sahipliğinizde kurarız." },
+      { q: "Sonuçları nasıl ölçüyorsunuz?", a: "Her projeyi net KPI'larla başlatır, canlı panellerle gerçek iş etkisini sürekli ölçeriz." },
+    ],
+  },
+  contact: {
+    eyebrow: "İLETİŞİM",
+    heading: "Büyümeye hazır mısınız?",
+    sub: "Hedeflerinizi dinliyor, size en uygun büyüme sistemini birlikte belirliyoruz. Görüşme Google Meet üzerinden, ücretsiz ve bağlayıcı değildir.",
+    hostRole: "VertexStarter",
+    meet: "Google Meet · 30 dk · ücretsiz",
+    phone: "Telefon",
+    email: "E-posta",
+    address: "Adres",
+  },
+  finalCta: {
+    heading: "Verinizi büyümeye çevirmeye hazır mısınız?",
+    sub: "Yapay zeka ve otomasyon sistemlerini şirketinize kuralım. İlk görüşme ücretsiz.",
+    button: "Görüşme planla",
+  },
+  footer: {
+    tagline: "Yapay zeka, otomasyon ve veri sistemleriyle şirketinizi büyütüyoruz.",
+    industries: "Sektörler",
+    company: "Kurumsal",
+    companyLinks: [
+      { href: "/#hizmetler", label: "Hizmetler" },
+      { href: "/#surec", label: "Süreç" },
+      { href: "/#vakalar", label: "Vakalar" },
+      { href: "/blog", label: "Blog" },
+      { href: "/#iletisim", label: "İletişim" },
+    ],
+    rights: "Tüm hakları saklıdır.",
+  },
+  blog: {
+    eyebrow: "BLOG",
+    heading: "Veriyi büyümeye çeviren fikirler.",
+    sub: "Yapay zeka, otomasyon ve veri sistemleri üzerine uygulanabilir içerikler.",
+    all: "Tümü",
+    search: "Yazılarda ara",
+    read: "Oku",
+    empty: "Aramanıza uygun yazı bulunamadı.",
+    back: "Tüm yazılar",
+    related: "Benzer yazılar",
+    minutes: "dk",
+    reading: "dk okuma",
+    ctaHeading: "Verinizi büyümeye çevirelim.",
+    ctaSub: "Şirketinize özel bir veri ve otomasyon yol haritası çıkaralım.",
+  },
+  industryPage: {
+    crumb: "SEKTÖRLER",
+    problems: "Sektör problemleri",
+    solutions: "Çözüm önerilerimiz",
+    useCases: "Kullanım senaryoları",
+    automations: "Otomasyon örnekleri",
+    workflow: "İş akışı",
+    advantages: "Avantajlar",
+    ctaSuffix: "operasyonunuzu otomatikleştirelim.",
+    headingSuffix: "için veri ve otomasyon.",
+  },
+};
+
+export type Dict = typeof tr;
+
+const en: Dict = {
+  nav: {
+    links: [
+      { href: "/#hizmetler", label: "Services" },
+      { href: "/#sektorler", label: "Industries" },
+      { href: "/#surec", label: "Process" },
+      { href: "/#vakalar", label: "Case Studies" },
+      { href: "/blog", label: "Blog" },
+      { href: "/#iletisim", label: "Contact" },
+    ],
+    cta: "Book a call",
+    menuOpen: "Open menu",
+    menuClose: "Close menu",
+  },
+  hero: {
+    eyebrow: "AI GROWTH STUDIO",
+    titleA: "We Grow Your Company with AI and",
+    titleAccent: "Automation.",
+    subtitle:
+      "We turn your company's data into growth systems. With AI and automation we scale your sales, operations and customer acquisition.",
+    primary: "Book a call",
+    secondary: "See services",
+  },
+  stats: [
+    { k: "12", v: "End-to-end services" },
+    { k: "7", v: "Industry solutions" },
+    { k: "7/24", v: "Always-on AI systems" },
+  ],
+  logos: { label: "Brands we help grow" },
+  services: {
+    headA: "Ser",
+    headAccent: "vices",
+    sub: "End-to-end services that turn data into growth. We unite AI, automation and performance marketing in a single growth system.",
+    items: [
+      {
+        title: "Shopify E-Commerce Store Setup",
+        desc: "We design high-converting, brand-specific Shopify stores; completing all technical infrastructure, payment and shipping integrations to get your store live and ready to run together.",
+      },
+      {
+        title: "AI Automation Systems",
+        desc: "We digitize your business in detail with AI-powered automations, reduce your workload and scale your operations.",
+      },
+      {
+        title: "Web Design and Development",
+        desc: "We strengthen your brand's digital prestige with modern, fast and experience-focused websites.",
+      },
+      {
+        title: "Meta Ads Management",
+        desc: "We manage your Facebook and Instagram campaigns with data-driven strategies for higher conversion at lower cost.",
+      },
+      {
+        title: "Google Ads Management",
+        desc: "We optimize Search, Shopping, YouTube and Performance Max campaigns to build a quality customer pipeline.",
+      },
+      {
+        title: "SEO and Content Marketing",
+        desc: "We increase your visibility on search engines and build organic traffic and sustainable customer reach.",
+      },
+      {
+        title: "AI Content and Video Production",
+        desc: "We produce ad creatives, product visuals, UGC videos, social media content and marketing assets with AI.",
+      },
+      {
+        title: "CRM and Sales Automation",
+        desc: "We automate your quotes, customer tracking, sales flows and CRM infrastructure to expand your sales capacity.",
+      },
+      {
+        title: "Email and WhatsApp Automation",
+        desc: "We build email, SMS and WhatsApp journeys that automate the customer lifecycle and raise repeat-sales rates.",
+      },
+      {
+        title: "Brand and Growth Strategy",
+        desc: "We build positioning, offers and a growth system that set you apart from competitors.",
+      },
+      {
+        title: "Conversion Rate Optimization (CRO)",
+        desc: "We analyze your website and sales flows to convert more visitors into customers.",
+      },
+      {
+        title: "Analytics & Performance Reporting",
+        desc: "We analyze all your marketing activity in real time and deliver data-driven growth decisions.",
+      },
+    ],
+  },
+  problem: {
+    heading: "You have data, but no system.",
+    sub: "Most companies own data; the real problem is turning it into a usable growth system. Here is the difference.",
+    nowTitle: "What you face today",
+    withTitle: "With VertexStarter",
+    problems: [
+      { t: "Scattered data", d: "Your data is fragmented across different panels and spreadsheets." },
+      { t: "Lost customers", d: "Leads answered late quietly go to competitors." },
+      { t: "Inefficient operations", d: "Processes are disconnected and everything runs in silos." },
+      { t: "Manual work", d: "Your team handles data entry instead of creating value." },
+      { t: "Untracked processes", d: "No one sees which step is the bottleneck." },
+      { t: "Lost sales", d: "Which channel is actually profitable cannot be measured." },
+    ],
+    solutions: [
+      { t: "Single source of truth", d: "We gather all your data into one visible system." },
+      { t: "Automated follow-up", d: "We build automated flows that capture every lead." },
+      { t: "Connected operations", d: "We connect your processes end to end." },
+      { t: "Delegate work to automation", d: "We turn repetitive work into rules." },
+      { t: "Live visibility", d: "We make every step trackable in real time." },
+      { t: "Measurable sales", d: "We clarify which channel actually drives profit." },
+    ],
+  },
+  industriesSection: {
+    heading: "Tailored systems for every industry.",
+    sub: "Data and automation solutions built for the language and operations of your sector.",
+    explore: "Explore",
+    ctaTitle: "Industry not listed?",
+    ctaAction: "We will build it for you",
+  },
+  process: {
+    heading: "From data to scale, a clear process.",
+    sub: "Four steps that turn scattered data into a working growth system.",
+    steps: [
+      { name: "Analyze the Data", desc: "We review your data, tools and processes to surface growth opportunities." },
+      { name: "Design the System", desc: "We design a custom data and automation architecture with measurable goals." },
+      { name: "Build the Automation", desc: "We set up the systems, connect your existing tools and train your team." },
+      { name: "Scale the Company", desc: "We monitor results in real time, keep improving and scale the winning systems." },
+    ],
+  },
+  cases: {
+    heading: "Measurable results.",
+    sub: "We judge every project by one metric: real business impact. The figures below are sample scenarios.",
+    items: [
+      { tag: "E-Commerce", title: "AI-powered conversion optimization on a Shopify store", metric: "+182%", metricLabel: "Conversion rate" },
+      { tag: "B2B SaaS", title: "Multichannel AI sales outreach", metric: "3.4×", metricLabel: "Qualified meetings" },
+      { tag: "Performance", title: "Meta and Google Ads rebuild", metric: "-46%", metricLabel: "Acquisition cost" },
+      { tag: "Automation", title: "Operations automation with n8n", metric: "120h+", metricLabel: "Weekly hours saved" },
+      { tag: "AI", title: "24/7 AI voice assistant", metric: "92%", metricLabel: "Auto-resolved" },
+      { tag: "Content", title: "AI content production pipeline", metric: "8×", metricLabel: "Production speed" },
+    ],
+  },
+  about: {
+    heading: "The team turning technology into growth.",
+    p1: "VertexStarter combines AI, automation and data systems to turn companies' data into usable growth systems. Instead of chasing trends, we build systems that create real impact in your business.",
+    p2: "Our goal is clear: automate your processes, cut costs and grow revenue sustainably.",
+    imgAlt: "A working moment from the VertexStarter team",
+    pillars: [
+      { title: "Behavioral psychology", desc: "We build more persuasive experiences that understand human decisions." },
+      { title: "Measurable results", desc: "We build every system with clear KPIs and move with data, not guesses." },
+      { title: "Embedded AI", desc: "We make AI a working layer in your processes, not decoration." },
+      { title: "End-to-end process", desc: "We own the whole journey from strategy to setup and training." },
+    ],
+  },
+  faq: {
+    heading: "Frequently asked questions.",
+    items: [
+      { q: "Do I need existing infrastructure to build data systems?", a: "No. Whatever your current tools are, we gather your data into one system and make it usable. We can also build from scratch." },
+      { q: "How long does it take?", a: "We define scope in the call. We usually launch the first automations within a few weeks, then scale step by step." },
+      { q: "Which industries do you work with?", a: "E-commerce, healthcare, real estate, restaurants, education, manufacturing and logistics, plus any sector that can grow with data." },
+      { q: "Will we manage the systems you build?", a: "Up to you. We can train your team and hand over, or run the systems for you with ongoing support." },
+      { q: "Are the AI solutions safe?", a: "We use your data in permitted, controlled flows. We build systems that are transparent, auditable and owned by you." },
+      { q: "How do you measure results?", a: "We start every project with clear KPIs and continuously measure real business impact with live dashboards." },
+    ],
+  },
+  contact: {
+    eyebrow: "CONTACT",
+    heading: "Ready to grow?",
+    sub: "We listen to your goals and define the best growth system together. The meeting is on Google Meet, free and non-binding.",
+    hostRole: "VertexStarter",
+    meet: "Google Meet · 30 min · free",
+    phone: "Phone",
+    email: "Email",
+    address: "Address",
+  },
+  finalCta: {
+    heading: "Ready to turn your data into growth?",
+    sub: "Let us build AI and automation systems for your company. The first call is free.",
+    button: "Book a call",
+  },
+  footer: {
+    tagline: "We grow your company with AI, automation and data systems.",
+    industries: "Industries",
+    company: "Company",
+    companyLinks: [
+      { href: "/#hizmetler", label: "Services" },
+      { href: "/#surec", label: "Process" },
+      { href: "/#vakalar", label: "Case Studies" },
+      { href: "/blog", label: "Blog" },
+      { href: "/#iletisim", label: "Contact" },
+    ],
+    rights: "All rights reserved.",
+  },
+  blog: {
+    eyebrow: "BLOG",
+    heading: "Ideas that turn data into growth.",
+    sub: "Actionable content on AI, automation and data systems.",
+    all: "All",
+    search: "Search posts",
+    read: "Read",
+    empty: "No posts match your search.",
+    back: "All posts",
+    related: "Related posts",
+    minutes: "min",
+    reading: "min read",
+    ctaHeading: "Let us turn your data into growth.",
+    ctaSub: "We will craft a custom data and automation roadmap for your company.",
+  },
+  industryPage: {
+    crumb: "INDUSTRIES",
+    problems: "Industry problems",
+    solutions: "Our solutions",
+    useCases: "Use cases",
+    automations: "Automation examples",
+    workflow: "Workflow",
+    advantages: "Advantages",
+    ctaSuffix: "let us automate your operations.",
+    headingSuffix: "data and automation.",
+  },
+};
+
+export const messages: Record<Locale, Dict> = { tr, en };

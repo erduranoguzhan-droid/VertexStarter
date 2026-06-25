@@ -1,6 +1,19 @@
 import { Reveal } from "@/components/reveal";
+import { getDict } from "@/lib/i18n";
 
-type Case = {
+type Meta = { seed: string; featured?: boolean };
+
+// Sıra, sözlükteki cases.items ile birebir aynı.
+const meta: Meta[] = [
+  { seed: "nexora-shopify-store", featured: true },
+  { seed: "nexora-b2b-outreach" },
+  { seed: "nexora-ads-performance" },
+  { seed: "nexora-automation-ops" },
+  { seed: "nexora-voice-agent" },
+  { seed: "nexora-content-pipeline" },
+];
+
+type Card = {
   tag: string;
   title: string;
   metric: string;
@@ -9,53 +22,7 @@ type Case = {
   featured?: boolean;
 };
 
-const cases: Case[] = [
-  {
-    tag: "E-Ticaret",
-    title: "Shopify mağazasında AI destekli dönüşüm optimizasyonu",
-    metric: "+182%",
-    metricLabel: "Dönüşüm oranı",
-    seed: "nexora-shopify-store",
-    featured: true,
-  },
-  {
-    tag: "B2B SaaS",
-    title: "Çok kanallı AI satış outreach",
-    metric: "3.4×",
-    metricLabel: "Nitelikli görüşme",
-    seed: "nexora-b2b-outreach",
-  },
-  {
-    tag: "Performans",
-    title: "Meta ve Google Ads yeniden yapısı",
-    metric: "-46%",
-    metricLabel: "Edinme maliyeti",
-    seed: "nexora-ads-performance",
-  },
-  {
-    tag: "Otomasyon",
-    title: "n8n ile operasyon otomasyonu",
-    metric: "120s+",
-    metricLabel: "Haftalık kazanç",
-    seed: "nexora-automation-ops",
-  },
-  {
-    tag: "Yapay Zeka",
-    title: "7/24 AI sesli asistan",
-    metric: "%92",
-    metricLabel: "Otomatik çözüm",
-    seed: "nexora-voice-agent",
-  },
-  {
-    tag: "İçerik",
-    title: "AI içerik üretim hattı",
-    metric: "8×",
-    metricLabel: "Üretim hızı",
-    seed: "nexora-content-pipeline",
-  },
-];
-
-function CaseCard({ c }: { c: Case }) {
+function CaseCard({ c }: { c: Card }) {
   return (
     <div className="group relative flex h-full flex-col overflow-hidden rounded-card bg-surface ring-line">
       <div className="relative overflow-hidden">
@@ -99,18 +66,17 @@ function CaseCard({ c }: { c: Case }) {
   );
 }
 
-export function CaseStudies() {
+export async function CaseStudies() {
+  const { t } = await getDict();
+  const cases: Card[] = t.cases.items.map((c, i) => ({ ...c, ...meta[i] }));
   return (
     <section id="vakalar" className="scroll-mt-20 border-t border-line py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <Reveal className="max-w-2xl">
           <h2 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-            Ölçülebilir sonuçlar.
+            {t.cases.heading}
           </h2>
-          <p className="mt-4 text-muted">
-            Her projeyi tek bir ölçütle değerlendiririz: gerçek iş etkisi.
-            Aşağıdaki rakamlar örnek senaryolardır.
-          </p>
+          <p className="mt-4 text-muted">{t.cases.sub}</p>
         </Reveal>
 
         <div className="mt-16 grid gap-5 lg:auto-rows-fr lg:grid-cols-6">

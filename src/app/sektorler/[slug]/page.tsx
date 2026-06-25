@@ -9,11 +9,12 @@ import {
   ArrowRight,
 } from "@phosphor-icons/react/dist/ssr";
 import { Reveal } from "@/components/reveal";
-import { industries, getIndustry } from "@/lib/industries";
+import { industrySlugs, getIndustries, getIndustry } from "@/lib/industries";
+import { getDict, getLocale } from "@/lib/i18n";
 import { site } from "@/lib/site";
 
 export function generateStaticParams() {
-  return industries.map((i) => ({ slug: i.slug }));
+  return industrySlugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -22,9 +23,13 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const ind = getIndustry(slug);
+  const locale = await getLocale();
+  const ind = getIndustry(slug, locale);
   if (!ind) return {};
-  const title = `${ind.name} için Yapay Zeka ve Otomasyon Çözümleri`;
+  const title =
+    locale === "en"
+      ? `AI and Automation Solutions for ${ind.name}`
+      : `${ind.name} için Yapay Zeka ve Otomasyon Çözümleri`;
   return {
     title,
     description: ind.intro,
@@ -39,12 +44,14 @@ export default async function IndustryPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const ind = getIndustry(slug);
+  const { locale, t } = await getDict();
+  const ind = getIndustry(slug, locale);
   if (!ind) notFound();
+  const ip = t.industryPage;
+  const others = getIndustries(locale).filter((i) => i.slug !== ind.slug);
 
   return (
     <main className="pt-16">
-      {/* hero */}
       <section className="relative overflow-hidden border-b border-line">
         <div className="absolute inset-0 -z-10">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -58,26 +65,21 @@ export default async function IndustryPage({
         </div>
         <div className="mx-auto max-w-7xl px-5 py-24 sm:px-8 sm:py-32">
           <Reveal className="max-w-3xl">
-            <Link
-              href="/#sektorler"
-              className="font-mono text-xs tracking-[0.18em] text-accent"
-            >
-              SEKTÖRLER / {ind.name.toUpperCase()}
+            <Link href="/#sektorler" className="font-mono text-xs tracking-[0.18em] text-accent">
+              {ip.crumb} / {ind.name.toUpperCase()}
             </Link>
             <h1 className="mt-5 text-4xl font-semibold tracking-tight sm:text-6xl">
-              {ind.name} için veri ve otomasyon.
+              {ind.name} {ip.headingSuffix}
             </h1>
             <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted">
               {ind.tagline}
             </p>
-            <p className="mt-4 max-w-2xl leading-relaxed text-muted">
-              {ind.intro}
-            </p>
+            <p className="mt-4 max-w-2xl leading-relaxed text-muted">{ind.intro}</p>
             <Link
               href="/#iletisim"
               className="group mt-9 inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3.5 text-sm font-medium text-accent-ink transition-colors hover:bg-accent-strong"
             >
-              Görüşme planla
+              {t.nav.cta}
               <ArrowUpRight
                 weight="bold"
                 className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
@@ -87,13 +89,12 @@ export default async function IndustryPage({
         </div>
       </section>
 
-      {/* problems + solutions */}
       <section className="py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="grid gap-px overflow-hidden rounded-card ring-line lg:grid-cols-2">
             <div className="bg-surface p-8 sm:p-10">
               <h2 className="text-sm font-medium tracking-wide text-muted">
-                Sektör problemleri
+                {ip.problems}
               </h2>
               <ul className="mt-6 grid gap-4">
                 {ind.problems.map((p) => (
@@ -106,7 +107,7 @@ export default async function IndustryPage({
             </div>
             <div className="bg-surface-2 p-8 sm:p-10">
               <h2 className="text-sm font-medium tracking-wide text-accent">
-                Çözüm önerilerimiz
+                {ip.solutions}
               </h2>
               <ul className="mt-6 grid gap-4">
                 {ind.solutions.map((s) => (
@@ -121,11 +122,10 @@ export default async function IndustryPage({
         </div>
       </section>
 
-      {/* use cases */}
       <section className="border-t border-line py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <h2 className="max-w-2xl text-3xl font-semibold tracking-tight sm:text-4xl">
-            Kullanım senaryoları
+            {ip.useCases}
           </h2>
           <div className="mt-12 grid gap-px overflow-hidden rounded-card ring-line md:grid-cols-3">
             {ind.useCases.map((u, i) => (
@@ -140,12 +140,11 @@ export default async function IndustryPage({
         </div>
       </section>
 
-      {/* automations + workflow */}
       <section className="border-t border-line py-24 sm:py-32">
         <div className="mx-auto grid max-w-7xl gap-14 px-5 sm:px-8 lg:grid-cols-2">
           <div>
             <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-              Otomasyon örnekleri
+              {ip.automations}
             </h2>
             <ul className="mt-8 flex flex-wrap gap-3">
               {ind.automations.map((a) => (
@@ -161,14 +160,11 @@ export default async function IndustryPage({
           </div>
           <div>
             <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-              İş akışı
+              {ip.workflow}
             </h2>
             <ol className="mt-8 grid gap-4">
               {ind.workflow.map((w, i) => (
-                <li
-                  key={w.step}
-                  className="flex gap-4 rounded-card bg-surface p-5 ring-line"
-                >
+                <li key={w.step} className="flex gap-4 rounded-card bg-surface p-5 ring-line">
                   <span className="font-mono text-sm text-accent">
                     {String(i + 1).padStart(2, "0")}
                   </span>
@@ -183,19 +179,14 @@ export default async function IndustryPage({
         </div>
       </section>
 
-      {/* advantages */}
       <section className="border-t border-line py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <h2 className="max-w-2xl text-3xl font-semibold tracking-tight sm:text-4xl">
-            Avantajlar
+            {ip.advantages}
           </h2>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {ind.advantages.map((a, i) => (
-              <Reveal
-                key={a}
-                delay={i * 60}
-                className="rounded-card bg-surface p-7 ring-line"
-              >
+              <Reveal key={a} delay={i * 60} className="rounded-card bg-surface p-7 ring-line">
                 <CheckCircle weight="duotone" className="size-7 text-accent" />
                 <p className="mt-4 font-medium text-fg">{a}</p>
               </Reveal>
@@ -204,36 +195,32 @@ export default async function IndustryPage({
         </div>
       </section>
 
-      {/* cta */}
       <section className="border-t border-line py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="rounded-card bg-accent px-6 py-16 text-center text-accent-ink sm:px-12 sm:py-20">
             <h2 className="mx-auto max-w-2xl text-3xl font-semibold tracking-tight sm:text-4xl">
-              {ind.name} operasyonunuzu otomatikleştirelim.
+              {ind.name} {ip.ctaSuffix}
             </h2>
             <Link
               href="/#iletisim"
               className="group mt-8 inline-flex items-center gap-2 rounded-full bg-bg px-7 py-3.5 text-sm font-medium text-fg transition-transform hover:scale-[1.02]"
             >
-              Görüşme planla
+              {t.nav.cta}
               <ArrowUpRight weight="bold" className="size-4" />
             </Link>
           </div>
 
           <div className="mt-10 flex flex-wrap gap-4">
-            {industries
-              .filter((i) => i.slug !== ind.slug)
-              .slice(0, 4)
-              .map((i) => (
-                <Link
-                  key={i.slug}
-                  href={`/sektorler/${i.slug}`}
-                  className="group inline-flex items-center gap-1.5 text-sm text-muted transition-colors hover:text-accent"
-                >
-                  {i.name}
-                  <ArrowRight weight="bold" className="size-3.5" />
-                </Link>
-              ))}
+            {others.slice(0, 4).map((i) => (
+              <Link
+                key={i.slug}
+                href={`/sektorler/${i.slug}`}
+                className="group inline-flex items-center gap-1.5 text-sm text-muted transition-colors hover:text-accent"
+              >
+                {i.name}
+                <ArrowRight weight="bold" className="size-3.5" />
+              </Link>
+            ))}
           </div>
         </div>
       </section>

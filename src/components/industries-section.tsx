@@ -11,7 +11,8 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import type { Icon } from "@phosphor-icons/react";
 import { Reveal } from "@/components/reveal";
-import { industries } from "@/lib/industries";
+import { getIndustries } from "@/lib/industries";
+import { getDict } from "@/lib/i18n";
 
 const icons: Record<string, Icon> = {
   "e-ticaret": ShoppingCart,
@@ -23,18 +24,19 @@ const icons: Record<string, Icon> = {
   lojistik: Truck,
 };
 
-export function IndustriesSection() {
+export async function IndustriesSection() {
+  const { locale, t } = await getDict();
+  const s = t.industriesSection;
+  const industries = getIndustries(locale);
+
   return (
     <section id="sektorler" className="scroll-mt-20 border-t border-line py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <Reveal className="max-w-2xl">
           <h2 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-            Her sektör için özel sistemler.
+            {s.heading}
           </h2>
-          <p className="mt-4 text-muted">
-            Sektörünüzün diline ve operasyonuna göre kurulan veri ve otomasyon
-            çözümleri.
-          </p>
+          <p className="mt-4 text-muted">{s.sub}</p>
         </Reveal>
 
         <div className="mt-14 grid gap-px overflow-hidden rounded-card ring-line sm:grid-cols-2 lg:grid-cols-4">
@@ -54,7 +56,7 @@ export function IndustriesSection() {
                     </p>
                   </div>
                   <span className="inline-flex items-center gap-1 text-sm text-accent">
-                    İncele
+                    {s.explore}
                     <ArrowUpRight
                       weight="bold"
                       className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
@@ -70,11 +72,9 @@ export function IndustriesSection() {
               href="/#iletisim"
               className="group flex h-full flex-col justify-between gap-4 bg-accent p-7 text-accent-ink"
             >
-              <span className="font-semibold leading-snug">
-                Sektörünüz listede yok mu?
-              </span>
+              <span className="font-semibold leading-snug">{s.ctaTitle}</span>
               <span className="inline-flex items-center gap-1 text-sm font-medium">
-                Size özel kuralım
+                {s.ctaAction}
                 <ArrowUpRight weight="bold" className="size-4" />
               </span>
             </Link>

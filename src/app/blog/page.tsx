@@ -1,33 +1,40 @@
 import type { Metadata } from "next";
 import { BlogIndex } from "@/components/blog-index";
-import { posts } from "@/lib/blog";
+import { getPosts } from "@/lib/blog";
+import { getDict, getLocale } from "@/lib/i18n";
 
-export const metadata: Metadata = {
-  title: "Blog - Veri, Yapay Zeka ve Otomasyon",
-  description:
-    "Veri sistemleri, otomasyon ve yapay zeka üzerine pratik yazılar. Şirketinizi büyüten sistemleri nasıl kurarsınız?",
-  alternates: { canonical: "/blog" },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  return {
+    title: locale === "en" ? "Blog - Data, AI and Automation" : "Blog - Veri, Yapay Zeka ve Otomasyon",
+    description:
+      locale === "en"
+        ? "Practical writing on data systems, automation and AI. How to build the systems that grow your company."
+        : "Veri sistemleri, otomasyon ve yapay zeka üzerine pratik yazılar. Şirketinizi büyüten sistemleri nasıl kurarsınız?",
+    alternates: { canonical: "/blog" },
+  };
+}
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const { locale, t } = await getDict();
+  const posts = getPosts(locale);
   return (
     <main className="pt-16">
       <section className="border-b border-line py-20 sm:py-28">
         <div className="mx-auto max-w-5xl px-5 sm:px-8">
           <span className="font-mono text-xs tracking-[0.18em] text-accent">
-            BLOG
+            {t.blog.eyebrow}
           </span>
           <h1 className="mt-5 text-4xl font-semibold tracking-tight sm:text-6xl">
-            Veriyi büyümeye çeviren fikirler.
+            {t.blog.heading}
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted">
-            Yapay zeka, otomasyon ve veri sistemleri üzerine uygulanabilir
-            içerikler.
+            {t.blog.sub}
           </p>
         </div>
       </section>
 
-      <BlogIndex posts={posts} />
+      <BlogIndex posts={posts} dict={t.blog} locale={locale} />
     </main>
   );
 }

@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
-import { posts, getPost, relatedPosts } from "@/lib/blog";
+import { postSlugs, getPost, relatedPosts } from "@/lib/blog";
+import { getDict, getLocale } from "@/lib/i18n";
 import { site } from "@/lib/site";
 
 export function generateStaticParams() {
-  return posts.map((p) => ({ slug: p.slug }));
+  return postSlugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -15,7 +16,8 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const post = getPost(slug);
+  const locale = await getLocale();
+  const post = getPost(slug, locale);
   if (!post) return {};
   return {
     title: post.title,
@@ -31,24 +33,21 @@ export async function generateMetadata({
   };
 }
 
-function formatDate(iso: string) {
-  return new Date(iso).toLocaleDateString("tr-TR", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
-}
-
 export default async function PostPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = getPost(slug);
+  const { locale, t } = await getDict();
+  const post = getPost(slug, locale);
   if (!post) notFound();
 
-  const related = relatedPosts(post.slug, post.category);
+  const related = relatedPosts(post.slug, post.category, locale);
+  const fmt = new Date(post.date).toLocaleDateString(
+    locale === "en" ? "en-US" : "tr-TR",
+    { day: "numeric", month: "long", year: "numeric" }
+  );
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -70,23 +69,21 @@ export default async function PostPage({
             className="inline-flex items-center gap-1.5 text-sm text-muted transition-colors hover:text-accent"
           >
             <ArrowLeft weight="bold" className="size-4" />
-            Tüm yazılar
+            {t.blog.back}
           </Link>
 
           <div className="mt-8 flex items-center gap-3 text-xs text-faint">
-            <span className="font-mono tracking-wide text-accent">
-              {post.category}
+            <span className="font-mono tracking-wide text-accent">{post.category}</span>
+            <span>{fmt}</span>
+            <span>
+              {post.readingMinutes} {t.blog.reading}
             </span>
-            <span>{formatDate(post.date)}</span>
-            <span>{post.readingMinutes} dk okuma</span>
           </div>
 
           <h1 className="mt-4 text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
             {post.title}
           </h1>
-          <p className="mt-5 text-lg leading-relaxed text-muted">
-            {post.excerpt}
-          </p>
+          <p className="mt-5 text-lg leading-relaxed text-muted">{post.excerpt}</p>
           <p className="mt-4 text-sm text-faint">{post.author}</p>
         </div>
 
@@ -108,16 +105,14 @@ export default async function PostPage({
 
           <div className="mt-14 rounded-card bg-surface p-8 ring-line">
             <h2 className="text-xl font-semibold tracking-tight text-fg">
-              Verinizi büyümeye çevirelim.
+              {t.blog.ctaHeading}
             </h2>
-            <p className="mt-2 text-sm text-muted">
-              Şirketinize özel bir veri ve otomasyon yol haritası çıkaralım.
-            </p>
+            <p className="mt-2 text-sm text-muted">{t.blog.ctaSub}</p>
             <Link
               href="/#iletisim"
               className="group mt-5 inline-flex items-center gap-2 rounded-full bg-accent px-5 py-3 text-sm font-medium text-accent-ink transition-colors hover:bg-accent-strong"
             >
-              Görüşme planla
+              {t.nav.cta}
               <ArrowUpRight weight="bold" className="size-4" />
             </Link>
           </div>
@@ -127,9 +122,7 @@ export default async function PostPage({
       {related.length > 0 && (
         <section className="border-t border-line py-16 sm:py-20">
           <div className="mx-auto max-w-5xl px-5 sm:px-8">
-            <h2 className="text-2xl font-semibold tracking-tight">
-              Benzer yazılar
-            </h2>
+            <h2 className="text-2xl font-semibold tracking-tight">{t.blog.related}</h2>
             <div className="mt-8 grid gap-6 sm:grid-cols-2">
               {related.map((p) => (
                 <Link

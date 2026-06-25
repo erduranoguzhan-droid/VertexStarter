@@ -10,18 +10,14 @@ import { Faq } from "@/components/faq";
 import { Contact } from "@/components/contact";
 import { FinalCta } from "@/components/final-cta";
 import { Reveal } from "@/components/reveal";
+import { getDict } from "@/lib/i18n";
 
-const stats = [
-  { k: "12", v: "Uçtan uca hizmet" },
-  { k: "7", v: "Sektör çözümü" },
-  { k: "7/24", v: "Çalışan AI sistemleri" },
-];
-
-function Stats() {
+async function Stats() {
+  const { t } = await getDict();
   return (
     <section className="border-b border-line">
       <div className="mx-auto grid max-w-7xl grid-cols-1 divide-y px-5 sm:grid-cols-3 sm:divide-x sm:divide-y-0 sm:px-8">
-        {stats.map((s, i) => (
+        {t.stats.map((s, i) => (
           <Reveal
             key={s.v}
             delay={i * 70}
