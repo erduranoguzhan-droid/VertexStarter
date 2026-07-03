@@ -1,19 +1,26 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Roboto, Playfair_Display, JetBrains_Mono } from "next/font/google";
 import { site } from "@/lib/site";
 import { getDict } from "@/lib/i18n";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import "./globals.css";
 
-const geistSans = Geist({
+const roboto = Roboto({
   subsets: ["latin", "latin-ext"],
-  variable: "--font-geist-sans",
+  weight: ["300", "400", "500", "700"],
+  variable: "--font-roboto",
 });
 
-const geistMono = Geist_Mono({
+const playfair = Playfair_Display({
   subsets: ["latin", "latin-ext"],
-  variable: "--font-geist-mono",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-playfair",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-jetbrains",
 });
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -64,7 +71,10 @@ export default async function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   const { locale, t } = await getDict();
   return (
-    <html lang={locale} className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html
+      lang={locale}
+      className={`${roboto.variable} ${playfair.variable} ${jetbrainsMono.variable}`}
+    >
       <body className="min-h-dvh overflow-x-hidden">
         <div className="grain" aria-hidden="true" />
         <Navbar dict={t.nav} locale={locale} />

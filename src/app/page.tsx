@@ -3,8 +3,10 @@ import { Logos } from "@/components/logos";
 import { AiEmployees } from "@/components/ai-employees";
 import { Integrations } from "@/components/integrations";
 import { ProblemSolution } from "@/components/problem-solution";
+import { WhyChooseUs } from "@/components/why-choose-us";
 import { Process } from "@/components/process";
 import { CaseStudies } from "@/components/case-studies";
+import { Pricing } from "@/components/pricing";
 import { About } from "@/components/about";
 import { Faq } from "@/components/faq";
 import { Contact } from "@/components/contact";
@@ -43,8 +45,10 @@ export default function Home() {
       <AiEmployees />
       <Integrations />
       <ProblemSolution />
+      <WhyChooseUs />
       <Process />
       <CaseStudies />
+      <Pricing />
       <About />
       <Faq />
       <Contact />

@@ -1,7 +1,6 @@
 "use client";
 
 import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
-import { LiquidButton } from "@/components/ui/liquid-glass-button";
 
 function scrollTo(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -16,18 +15,20 @@ export function HeroActions({
 }) {
   return (
     <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-      <LiquidButton
-        size="xl"
+      <button
         onClick={() => scrollTo("iletisim")}
-        className="rounded-full border border-accent/40 text-fg"
+        className="group inline-flex items-center justify-center gap-2 rounded-full bg-accent px-7 py-3.5 text-sm font-medium text-accent-ink transition-colors hover:bg-accent-strong"
       >
         {primary}
-        <ArrowUpRight weight="bold" className="size-4" />
-      </LiquidButton>
+        <ArrowUpRight
+          weight="bold"
+          className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+        />
+      </button>
 
       <button
         onClick={() => scrollTo("vakalar")}
-        className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-medium text-fg ring-line transition-colors hover:bg-surface"
+        className="inline-flex items-center justify-center gap-2 rounded-full bg-surface px-7 py-3.5 text-sm font-medium text-fg ring-line transition-colors hover:bg-surface-2"
       >
         {secondary}
       </button>

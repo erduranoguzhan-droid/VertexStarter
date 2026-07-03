@@ -1,9 +1,10 @@
 @import "tailwindcss";
 
 /*
-  NEXORA - dark-mode AI and growth agency
-  Accent lock: emerald-teal (single accent, whole page)
-  Type: Geist + Geist Mono. Shape: pill buttons, 14px cards, 10px inputs.
+  VertexStarter - editorial light AI studio (Leftflow-inspired)
+  Accent lock: red-orange (single accent, whole page)
+  Type: Playfair Display (display/serif) + Roboto (body) + JetBrains Mono (labels).
+  Shape: pill buttons, 14px cards, 10px inputs. Warm cream canvas.
 */
 
 @theme inline {
@@ -19,26 +20,27 @@
   --color-accent-ink: var(--accent-ink);
   --color-line: var(--line);
 
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-roboto);
+  --font-serif: var(--font-playfair);
+  --font-mono: var(--font-jetbrains);
 
   --radius-card: 14px;
   --radius-input: 10px;
 }
 
 :root {
-  /* Premium dark: indigo primary + violet accent (brand spec) */
-  --bg: #09090b;
-  --surface: #111111;
-  --surface-2: #17171b;
-  --fg: #ffffff;
-  --muted: #a1a1aa;
-  --faint: #71717a;
-  --accent: #4f46e5;
-  --accent-strong: #6366f1;
-  --accent-2: #7c3aed;
+  /* Leftflow-style warm light: cream canvas + red-orange accent */
+  --bg: #f5f4f0;
+  --surface: #ffffff;
+  --surface-2: #efece4;
+  --fg: #0a0a0a;
+  --muted: #57534e;
+  --faint: #a8a29e;
+  --accent: #e63b2e;
+  --accent-strong: #d42e22;
+  --accent-2: #ff7a6e;
   --accent-ink: #ffffff;
-  --line: rgba(255, 255, 255, 0.08);
+  --line: rgba(10, 10, 10, 0.10);
 }
 
 @layer base {
@@ -47,13 +49,19 @@
   }
   html {
     scroll-behavior: smooth;
-    color-scheme: dark;
+    color-scheme: light;
     -webkit-font-smoothing: antialiased;
   }
   body {
     background-color: var(--bg);
     color: var(--fg);
     font-family: var(--font-sans), system-ui, sans-serif;
+  }
+  h1,
+  h2 {
+    font-family: var(--font-serif), Georgia, "Times New Roman", serif;
+    font-weight: 500;
+    letter-spacing: -0.01em;
   }
   ::selection {
     background: color-mix(in oklab, var(--accent) 35%, transparent);
@@ -82,20 +90,21 @@
     box-shadow: inset 0 0 0 1px var(--line);
   }
   .text-gradient {
-    background: linear-gradient(100deg, var(--fg) 0%, var(--accent-strong) 60%, var(--accent-2) 100%);
+    background: linear-gradient(100deg, var(--fg) 0%, var(--accent-strong) 70%, var(--accent) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
   .accent-gradient {
-    background-image: linear-gradient(120deg, var(--accent), var(--accent-2));
+    background-image: linear-gradient(120deg, var(--accent), var(--accent-strong));
   }
   .glow {
-    box-shadow: 0 0 0 1px color-mix(in oklab, var(--accent) 30%, transparent),
-      0 24px 70px -24px color-mix(in oklab, var(--accent) 60%, transparent);
+    box-shadow: 0 1px 0 0 color-mix(in oklab, var(--accent) 18%, transparent),
+      0 24px 55px -28px color-mix(in oklab, var(--accent) 45%, transparent),
+      0 10px 30px -18px rgba(10, 10, 10, 0.18);
   }
   .glow-2 {
-    box-shadow: 0 0 60px -12px color-mix(in oklab, var(--accent-2) 55%, transparent);
+    box-shadow: 0 20px 50px -24px color-mix(in oklab, var(--accent) 40%, transparent);
   }
   /* gradient hairline border */
   .grad-border {
