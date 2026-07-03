@@ -8,7 +8,7 @@ export const site = {
   address: "Ali Paşa Mah. TEKİRDAĞ / ÇORLU",
   // Cal.com etkinlik linki (Google Meet üzerinden randevu, onay gerektirir).
   // Etkinlik ayarları: Location = Google Meet, "Requires confirmation" açık, 30 dk.
-  calLink: "vertexstarter/30min",
+  calLink: "oguzhanerduran/30min",
   tagline: "Şirketinizin verisini kullanılabilir sistemlere dönüştürüyoruz.",
   description:
     "VertexStarter, yapay zeka, otomasyon ve veri sistemleriyle şirketlerin verisini büyüme sistemlerine dönüştürür. Tekirdağ Çorlu merkezli teknoloji stüdyosu.",
