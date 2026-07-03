@@ -4,6 +4,7 @@ import { site } from "@/lib/site";
 import { getDict } from "@/lib/i18n";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { FloatingCta } from "@/components/floating-cta";
 import "./globals.css";
 
 const roboto = Roboto({
@@ -79,6 +80,10 @@ export default async function RootLayout({
         <div className="grain" aria-hidden="true" />
         <Navbar dict={t.nav} locale={locale} />
         {children}
+        <FloatingCta
+          cta={t.nav.cta}
+          whatsapp={locale === "en" ? "Message us on WhatsApp" : "WhatsApp'tan yazın"}
+        />
         <Footer />
         <script
           type="application/ld+json"

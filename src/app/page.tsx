@@ -2,10 +2,12 @@ import { Hero } from "@/components/hero";
 import { Logos } from "@/components/logos";
 import { AiEmployees } from "@/components/ai-employees";
 import { Integrations } from "@/components/integrations";
+import { Solutions } from "@/components/solutions";
 import { ProblemSolution } from "@/components/problem-solution";
 import { WhyChooseUs } from "@/components/why-choose-us";
 import { Process } from "@/components/process";
 import { CaseStudies } from "@/components/case-studies";
+import { Testimonials } from "@/components/testimonials";
 import { Pricing } from "@/components/pricing";
 import { About } from "@/components/about";
 import { Faq } from "@/components/faq";
@@ -44,10 +46,12 @@ export default function Home() {
       <Logos />
       <AiEmployees />
       <Integrations />
+      <Solutions />
       <ProblemSolution />
       <WhyChooseUs />
       <Process />
       <CaseStudies />
+      <Testimonials />
       <Pricing />
       <About />
       <Faq />
