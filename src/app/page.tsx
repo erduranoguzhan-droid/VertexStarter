@@ -1,8 +1,9 @@
 import { Hero } from "@/components/hero";
-import { Logos } from "@/components/logos";
 import { AiEmployees } from "@/components/ai-employees";
 import { Integrations } from "@/components/integrations";
 import { Solutions } from "@/components/solutions";
+import { Programs } from "@/components/programs";
+import { IndustriesSection } from "@/components/industries-section";
 import { ProblemSolution } from "@/components/problem-solution";
 import { WhyChooseUs } from "@/components/why-choose-us";
 import { Process } from "@/components/process";
@@ -46,10 +47,11 @@ export default function Home() {
     <main>
       <Hero />
       <Stats />
-      <Logos />
       <AiEmployees />
       <Integrations />
       <Solutions />
+      <Programs />
+      <IndustriesSection />
       <ProblemSolution />
       <WhyChooseUs />
       <Process />
