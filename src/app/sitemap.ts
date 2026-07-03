@@ -9,6 +9,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: site.url, lastModified: now, changeFrequency: "weekly", priority: 1 },
     { url: `${site.url}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${site.url}/gizlilik`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${site.url}/kosullar`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
   ];
 
   const industryRoutes: MetadataRoute.Sitemap = industrySlugs.map((slug) => ({

@@ -450,6 +450,7 @@ const tr = {
       { href: "/#iletisim", label: "İletişim" },
     ],
     rights: "Tüm hakları saklıdır.",
+    legal: { privacy: "Gizlilik ve KVKK", terms: "Kullanım Koşulları" },
   },
   blog: {
     eyebrow: "BLOG",
@@ -929,6 +930,7 @@ const en: Dict = {
       { href: "/#iletisim", label: "Contact" },
     ],
     rights: "All rights reserved.",
+    legal: { privacy: "Privacy & KVKK", terms: "Terms of Use" },
   },
   blog: {
     eyebrow: "BLOG",

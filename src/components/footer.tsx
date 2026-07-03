@@ -63,10 +63,24 @@ export async function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 border-t border-line pt-6">
+        <div className="mt-14 flex flex-col gap-4 border-t border-line pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs text-faint">
             © {new Date().getFullYear()} {site.name}. {f.rights}
           </p>
+          <div className="flex gap-5">
+            <Link
+              href="/gizlilik"
+              className="text-xs text-faint transition-colors hover:text-accent"
+            >
+              {f.legal.privacy}
+            </Link>
+            <Link
+              href="/kosullar"
+              className="text-xs text-faint transition-colors hover:text-accent"
+            >
+              {f.legal.terms}
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
