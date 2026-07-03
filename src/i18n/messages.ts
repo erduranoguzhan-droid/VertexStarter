@@ -279,6 +279,17 @@ const tr = {
       { name: "Şirketi Ölçeklendir", desc: "Sonuçları gerçek zamanlı izler, sürekli iyileştirir ve kazanan sistemleri ölçeklendiririz." },
     ],
   },
+  flow: {
+    eyebrow: "NASIL ÇALIŞIR",
+    heading: "Tetikleyiciden sonuca, tek akış.",
+    sub: "Her AI çalışan aynı basit döngüde çalışır: tetiklen, düşün, harekete geç, sonucu yarat.",
+    nodes: [
+      { t: "Tetikleyici", d: "Mesaj, çağrı, form veya olay" },
+      { t: "AI Motoru", d: "Anlar, karar verir, yanıt üretir" },
+      { t: "Araçlar", d: "CRM, takvim, WhatsApp, e-posta" },
+      { t: "Sonuç", d: "Yanıt, randevu, satış veya kayıt" },
+    ],
+  },
   cases: {
     heading: "Ölçülebilir sonuçlar.",
     sub: "Her projeyi tek bir ölçütle değerlendiririz: gerçek iş etkisi. Aşağıdaki rakamlar örnek senaryolardır.",
@@ -666,6 +677,17 @@ const en: Dict = {
       { name: "Design the System", desc: "We design a custom data and automation architecture with measurable goals." },
       { name: "Build the Automation", desc: "We set up the systems, connect your existing tools and train your team." },
       { name: "Scale the Company", desc: "We monitor results in real time, keep improving and scale the winning systems." },
+    ],
+  },
+  flow: {
+    eyebrow: "HOW IT WORKS",
+    heading: "From trigger to result, one flow.",
+    sub: "Every AI employee runs the same simple loop: trigger, think, act, deliver the result.",
+    nodes: [
+      { t: "Trigger", d: "Message, call, form or event" },
+      { t: "AI Engine", d: "Understands, decides, responds" },
+      { t: "Tools", d: "CRM, calendar, WhatsApp, email" },
+      { t: "Result", d: "Reply, booking, sale or record" },
     ],
   },
   cases: {

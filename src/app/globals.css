@@ -181,6 +181,34 @@
   }
 }
 
+/* animated automation flow connector */
+@keyframes flowSweep {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+.flow-line {
+  background-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in oklab, var(--accent) 15%, transparent) 30%,
+    var(--accent) 50%,
+    color-mix(in oklab, var(--accent) 15%, transparent) 70%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: flowSweep 3.4s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .flow-line {
+    animation: none;
+    background-position: 50% 0;
+  }
+}
+
 /* logo marquee (the single marquee on the page) */
 @keyframes marquee {
   from {

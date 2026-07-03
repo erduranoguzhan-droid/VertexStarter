@@ -6,6 +6,7 @@ import { Solutions } from "@/components/solutions";
 import { ProblemSolution } from "@/components/problem-solution";
 import { WhyChooseUs } from "@/components/why-choose-us";
 import { Process } from "@/components/process";
+import { AutomationFlow } from "@/components/automation-flow";
 import { CaseStudies } from "@/components/case-studies";
 import { Testimonials } from "@/components/testimonials";
 import { Pricing } from "@/components/pricing";
@@ -14,6 +15,7 @@ import { Faq } from "@/components/faq";
 import { Contact } from "@/components/contact";
 import { FinalCta } from "@/components/final-cta";
 import { Reveal } from "@/components/reveal";
+import { AnimatedCounter } from "@/components/animated-counter";
 import { getDict } from "@/lib/i18n";
 
 async function Stats() {
@@ -27,9 +29,10 @@ async function Stats() {
             delay={i * 70}
             className="flex flex-col gap-1 px-2 py-10 text-center sm:px-8"
           >
-            <span className="text-4xl font-semibold tracking-tight text-accent sm:text-5xl">
-              {s.k}
-            </span>
+            <AnimatedCounter
+              value={s.k}
+              className="text-4xl font-semibold tracking-tight text-accent sm:text-5xl"
+            />
             <span className="text-sm text-muted">{s.v}</span>
           </Reveal>
         ))}
@@ -50,6 +53,7 @@ export default function Home() {
       <ProblemSolution />
       <WhyChooseUs />
       <Process />
+      <AutomationFlow />
       <CaseStudies />
       <Testimonials />
       <Pricing />
