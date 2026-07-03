@@ -4,8 +4,21 @@ import { getDict } from "@/lib/i18n";
 
 export async function Faq() {
   const { t } = await getDict();
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: t.faq.items.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
   return (
     <section className="border-t border-line py-24 sm:py-32">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="mx-auto max-w-3xl px-5 sm:px-8">
         <Reveal>
           <h2 className="text-4xl font-semibold tracking-tight sm:text-5xl">

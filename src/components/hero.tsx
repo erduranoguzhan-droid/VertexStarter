@@ -1,4 +1,4 @@
-import { HeroActions } from "@/components/hero-actions";
+import { HeroContent } from "@/components/hero-content";
 import { getDict } from "@/lib/i18n";
 
 export async function Hero() {
@@ -21,27 +21,14 @@ export async function Hero() {
       </div>
 
       <div className="mx-auto flex min-h-[92vh] max-w-7xl flex-col justify-center px-5 pt-28 pb-24 sm:px-8">
-        <div className="max-w-3xl">
-          <span className="inline-flex items-center gap-2 rounded-full bg-surface px-3.5 py-1.5 font-mono text-xs tracking-[0.18em] text-accent ring-line">
-            <span className="relative flex size-1.5">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
-              <span className="relative inline-flex size-1.5 rounded-full bg-accent" />
-            </span>
-            {h.eyebrow}
-          </span>
-
-          <h1 className="mt-7 text-5xl leading-[1.02] tracking-tight sm:text-7xl">
-            {h.titleA} <span className="italic text-accent">{h.titleAccent}</span>
-          </h1>
-
-          <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted">
-            {h.subtitle}
-          </p>
-
-          <div className="mt-9">
-            <HeroActions primary={h.primary} secondary={h.secondary} />
-          </div>
-        </div>
+        <HeroContent
+          eyebrow={h.eyebrow}
+          titleA={h.titleA}
+          titleAccent={h.titleAccent}
+          subtitle={h.subtitle}
+          primary={h.primary}
+          secondary={h.secondary}
+        />
       </div>
     </section>
   );
