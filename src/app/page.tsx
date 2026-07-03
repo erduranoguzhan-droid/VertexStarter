@@ -1,8 +1,8 @@
 import { Hero } from "@/components/hero";
 import { Logos } from "@/components/logos";
+import { AiEmployees } from "@/components/ai-employees";
+import { Integrations } from "@/components/integrations";
 import { ProblemSolution } from "@/components/problem-solution";
-import { Services } from "@/components/services";
-import { IndustriesSection } from "@/components/industries-section";
 import { Process } from "@/components/process";
 import { CaseStudies } from "@/components/case-studies";
 import { About } from "@/components/about";
@@ -36,21 +36,19 @@ async function Stats() {
 
 export default function Home() {
   return (
-    <>
-      <main>
-        <Hero />
-        <Stats />
-        <Logos />
-        <Services />
-        <ProblemSolution />
-        <IndustriesSection />
-        <Process />
-        <CaseStudies />
-        <About />
-        <Faq />
-        <Contact />
-        <FinalCta />
-      </main>
-    </>
+    <main>
+      <Hero />
+      <Stats />
+      <Logos />
+      <AiEmployees />
+      <Integrations />
+      <ProblemSolution />
+      <Process />
+      <CaseStudies />
+      <About />
+      <Faq />
+      <Contact />
+      <FinalCta />
+    </main>
   );
 }

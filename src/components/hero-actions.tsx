@@ -26,7 +26,7 @@ export function HeroActions({
       </LiquidButton>
 
       <button
-        onClick={() => scrollTo("hizmetler")}
+        onClick={() => scrollTo("vakalar")}
         className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-medium text-fg ring-line transition-colors hover:bg-surface"
       >
         {secondary}

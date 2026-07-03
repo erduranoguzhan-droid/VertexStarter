@@ -68,8 +68,8 @@ export function WebGLShader() {
         float g = 0.05 / abs(p.y + sin((gx + time) * xScale) * yScale);
         float b = 0.05 / abs(p.y + sin((bx + time) * xScale) * yScale);
 
-        // tint toward brand teal (#2dd4a7 / cyan)
-        vec3 col = vec3(r, g, b) * vec3(0.18, 1.0, 0.82);
+        // tint toward brand indigo/violet (#4f46e5 / #7c3aed)
+        vec3 col = vec3(r, g, b) * vec3(0.52, 0.42, 1.0);
         gl_FragColor = vec4(col, 1.0);
       }
     `;
