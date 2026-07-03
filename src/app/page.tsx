@@ -3,6 +3,7 @@ import { AiEmployees } from "@/components/ai-employees";
 import { Integrations } from "@/components/integrations";
 import { Solutions } from "@/components/solutions";
 import { Programs } from "@/components/programs";
+import { Support } from "@/components/support";
 import { IndustriesSection } from "@/components/industries-section";
 import { ProblemSolution } from "@/components/problem-solution";
 import { WhyChooseUs } from "@/components/why-choose-us";
@@ -51,6 +52,7 @@ export default function Home() {
       <Integrations />
       <Solutions />
       <Programs />
+      <Support />
       <IndustriesSection />
       <ProblemSolution />
       <WhyChooseUs />

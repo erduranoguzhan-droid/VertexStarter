@@ -314,6 +314,50 @@ const tr = {
       ],
     },
   },
+  support: {
+    eyebrow: "TESLİM SONRASI",
+    heading: "Kurulumdan sonra da yanınızdayız.",
+    sub: "Sistemleri kurup bırakmıyoruz; aylık bakım, izleme ve optimizasyonla her ay daha iyi çalışmasını sağlıyoruz.",
+    popular: "En popüler",
+    perMonth: "/ay",
+    note: "Aylık abonelik, dilediğiniz zaman iptal edilebilir.",
+    cta: "Planı seç",
+    tiers: [
+      {
+        name: "Temel",
+        price: "$400",
+        features: [
+          "Aylık sistem sağlık kontrolü",
+          "E-posta destek",
+          "Güvenlik ve güncelleme yamaları",
+          "Aylık performans özeti",
+        ],
+      },
+      {
+        name: "Standart",
+        price: "$1.200",
+        features: [
+          "Temel'deki her şey",
+          "Öncelikli destek (48 saat SLA)",
+          "Aylık optimizasyon turu",
+          "Ayda 1 yeni otomasyon akışı",
+          "Canlı performans panosu",
+        ],
+      },
+      {
+        name: "Premium",
+        price: "$2.500",
+        features: [
+          "Standart'taki her şey",
+          "Adanmış çözüm mimarı",
+          "7/24 öncelikli destek (4 saat SLA)",
+          "Sürekli optimizasyon ve A/B test",
+          "Sınırsız küçük geliştirme",
+          "Aylık strateji görüşmesi",
+        ],
+      },
+    ],
+  },
   industriesSection: {
     heading: "Her sektör için özel sistemler.",
     sub: "Sektörünüzün diline ve operasyonuna göre kurulan veri ve otomasyon çözümleri.",
@@ -748,6 +792,50 @@ const en: Dict = {
         "Delivery of a sales-ready, ad-ready professional Shopify system",
       ],
     },
+  },
+  support: {
+    eyebrow: "POST-DELIVERY",
+    heading: "We stay with you after launch.",
+    sub: "We do not build and walk away; with monthly maintenance, monitoring and optimization we make the system work better every month.",
+    popular: "Most popular",
+    perMonth: "/mo",
+    note: "Monthly subscription, cancel anytime.",
+    cta: "Choose plan",
+    tiers: [
+      {
+        name: "Basic",
+        price: "$400",
+        features: [
+          "Monthly system health check",
+          "Email support",
+          "Security and update patches",
+          "Monthly performance summary",
+        ],
+      },
+      {
+        name: "Standard",
+        price: "$1,200",
+        features: [
+          "Everything in Basic",
+          "Priority support (48-hour SLA)",
+          "Monthly optimization round",
+          "1 new automation flow per month",
+          "Live performance dashboard",
+        ],
+      },
+      {
+        name: "Premium",
+        price: "$2,500",
+        features: [
+          "Everything in Standard",
+          "Dedicated solution architect",
+          "24/7 priority support (4-hour SLA)",
+          "Continuous optimization and A/B testing",
+          "Unlimited minor improvements",
+          "Monthly strategy call",
+        ],
+      },
+    ],
   },
   industriesSection: {
     heading: "Tailored systems for every industry.",
