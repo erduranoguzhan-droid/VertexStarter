@@ -7,6 +7,7 @@ import {
   Lightning,
   ArrowUpRight,
   ArrowRight,
+  Plus,
 } from "@phosphor-icons/react/dist/ssr";
 import { Reveal } from "@/components/reveal";
 import { industrySlugs, getIndustries, getIndustry } from "@/lib/industries";
@@ -189,6 +190,30 @@ export default async function IndustryPage({
               <Reveal key={a} delay={i * 60} className="rounded-card bg-surface p-7 ring-line">
                 <CheckCircle weight="duotone" className="size-7 text-accent" />
                 <p className="mt-4 font-medium text-fg">{a}</p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-line py-24 sm:py-32">
+        <div className="mx-auto max-w-3xl px-5 sm:px-8">
+          <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+            {ip.faqHeading}
+          </h2>
+          <div className="mt-10 divide-y divide-[color:var(--line)] border-y border-line">
+            {ip.faq.map((f, i) => (
+              <Reveal as="div" key={f.q} delay={i * 30}>
+                <details className="group">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 [&::-webkit-details-marker]:hidden">
+                    <span className="font-medium text-fg">{f.q}</span>
+                    <Plus
+                      weight="bold"
+                      className="size-5 shrink-0 text-accent transition-transform duration-300 group-open:rotate-45"
+                    />
+                  </summary>
+                  <p className="pb-5 pr-9 text-sm leading-relaxed text-muted">{f.a}</p>
+                </details>
               </Reveal>
             ))}
           </div>

@@ -15,6 +15,14 @@ const tr = {
     cta: "Strateji görüşmesi",
     menuOpen: "Menüyü aç",
     menuClose: "Menüyü kapat",
+    programs: {
+      label: "Programlar",
+      items: [
+        { href: "/sistemler", label: "Kurulum Sistemleri" },
+        { href: "/danismanlik", label: "Danışmanlık" },
+        { href: "/kurum-ici", label: "Kurum-içi" },
+      ],
+    },
   },
   hero: {
     eyebrow: "AI İŞ GÜCÜ ALTYAPISI",
@@ -539,6 +547,24 @@ const tr = {
     advantages: "Avantajlar",
     ctaSuffix: "operasyonunuzu otomatikleştirelim.",
     headingSuffix: "için veri ve otomasyon.",
+    faqHeading: "Sık sorulan sorular",
+    faq: [
+      { q: "Sektörüme özel çözüm mü kuruyorsunuz?", a: "Evet. Sistemleri sektörünüzün diline, süreçlerine ve araçlarına göre özelleştirir, sizin verinizle kurarız." },
+      { q: "Kurulum ne kadar sürer?", a: "Kapsama göre değişir; ilk sistemleri genelde birkaç hafta içinde devreye alır, adım adım ölçeklendiririz." },
+      { q: "Mevcut yazılımlarımla entegre olur mu?", a: "Evet. CRM, e-ticaret, muhasebe ve mesajlaşma araçlarınızın üzerine akıllı bir katman kurarız." },
+      { q: "Sonuçları nasıl ölçüyorsunuz?", a: "Her projeyi net KPI'larla başlatır, canlı panolarla gerçek iş etkisini sürekli izleriz." },
+    ],
+  },
+  cookie: {
+    text: "Deneyiminizi iyileştirmek ve kullanımı analiz etmek için çerezler kullanıyoruz.",
+    accept: "Kabul et",
+    reject: "Reddet",
+    more: "Ayrıntılar",
+  },
+  notFound: {
+    title: "Sayfa bulunamadı",
+    sub: "Aradığınız sayfa taşınmış veya hiç var olmamış olabilir. Ana sayfadan devam edebilirsiniz.",
+    home: "Ana sayfaya dön",
   },
 };
 
@@ -557,6 +583,14 @@ const en: Dict = {
     cta: "Book Strategy Call",
     menuOpen: "Open menu",
     menuClose: "Close menu",
+    programs: {
+      label: "Programs",
+      items: [
+        { href: "/sistemler", label: "Build Systems" },
+        { href: "/danismanlik", label: "Advisory" },
+        { href: "/kurum-ici", label: "In-house" },
+      ],
+    },
   },
   hero: {
     eyebrow: "AI WORKFORCE INFRASTRUCTURE",
@@ -1081,6 +1115,24 @@ const en: Dict = {
     advantages: "Advantages",
     ctaSuffix: "let us automate your operations.",
     headingSuffix: "data and automation.",
+    faqHeading: "Frequently asked questions",
+    faq: [
+      { q: "Do you build a solution specific to my industry?", a: "Yes. We customize systems to your sector's language, processes and tools, and build them with your own data." },
+      { q: "How long does setup take?", a: "It depends on scope; we usually launch the first systems within a few weeks and scale step by step." },
+      { q: "Does it integrate with my current software?", a: "Yes. We add a smart layer on top of your CRM, e-commerce, accounting and messaging tools." },
+      { q: "How do you measure results?", a: "We start every project with clear KPIs and continuously track real business impact with live dashboards." },
+    ],
+  },
+  cookie: {
+    text: "We use cookies to improve your experience and analyze usage.",
+    accept: "Accept",
+    reject: "Reject",
+    more: "Details",
+  },
+  notFound: {
+    title: "Page not found",
+    sub: "The page you are looking for may have moved or never existed. You can continue from the homepage.",
+    home: "Back to homepage",
   },
 };
 

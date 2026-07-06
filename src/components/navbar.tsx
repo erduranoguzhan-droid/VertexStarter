@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { List, X, ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
+import { List, X, ArrowUpRight, CaretDown } from "@phosphor-icons/react/dist/ssr";
 import { cn } from "@/lib/utils";
 import { site } from "@/lib/site";
 import { LocaleSwitcher } from "@/components/locale-switcher";
@@ -61,6 +61,32 @@ export function Navbar({ dict, locale }: { dict: Dict["nav"]; locale: Locale }) 
           <Wordmark />
 
           <nav className="hidden items-center gap-7 lg:flex">
+            <div className="group relative">
+              <button
+                className="flex items-center gap-1 text-sm text-muted transition-colors hover:text-fg group-focus-within:text-fg"
+                aria-haspopup="true"
+              >
+                {dict.programs.label}
+                <CaretDown
+                  weight="bold"
+                  className="size-3 transition-transform group-hover:rotate-180 group-focus-within:rotate-180"
+                />
+              </button>
+              <div className="invisible absolute left-1/2 top-full -translate-x-1/2 pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                <div className="glass min-w-56 rounded-card p-2 ring-line">
+                  {dict.programs.items.map((p) => (
+                    <Link
+                      key={p.href}
+                      href={p.href}
+                      className="block rounded-input px-3 py-2 text-sm text-muted transition-colors hover:bg-surface-2 hover:text-fg"
+                    >
+                      {p.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+
             {dict.links.map((l) => (
               <Link
                 key={l.href}
@@ -102,6 +128,19 @@ export function Navbar({ dict, locale }: { dict: Dict["nav"]; locale: Locale }) 
         {open && (
           <div className="glass border-t border-line px-5 py-3 lg:hidden">
             <nav className="grid">
+              <span className="pb-1 pt-3 font-mono text-[11px] uppercase tracking-widest text-faint">
+                {dict.programs.label}
+              </span>
+              {dict.programs.items.map((p) => (
+                <Link
+                  key={p.href}
+                  href={p.href}
+                  onClick={() => setOpen(false)}
+                  className="border-b border-line py-3 pl-3 text-sm text-muted hover:text-fg"
+                >
+                  {p.label}
+                </Link>
+              ))}
               {dict.links.map((l) => (
                 <Link
                   key={l.href}

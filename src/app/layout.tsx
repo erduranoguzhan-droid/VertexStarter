@@ -5,6 +5,7 @@ import { getDict } from "@/lib/i18n";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { FloatingCta } from "@/components/floating-cta";
+import { CookieConsent } from "@/components/cookie-consent";
 import "./globals.css";
 
 const roboto = Roboto({
@@ -83,6 +84,12 @@ export default async function RootLayout({
         <FloatingCta
           cta={t.nav.cta}
           whatsapp={locale === "en" ? "Message us on WhatsApp" : "WhatsApp'tan yazın"}
+        />
+        <CookieConsent
+          text={t.cookie.text}
+          accept={t.cookie.accept}
+          reject={t.cookie.reject}
+          more={t.cookie.more}
         />
         <Footer />
         <script
