@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight, ArrowLeft } from "@phosphor-icons/react/dist/ssr";
+import { ArrowUpRight, ArrowLeft, Plus } from "@phosphor-icons/react/dist/ssr";
 import { Reveal } from "@/components/reveal";
 import { ProgramCard, ShopifyCard } from "@/components/program-cards";
 import { getDict } from "@/lib/i18n";
@@ -46,7 +46,52 @@ export async function ProgramTrack({ track }: { track: TrackKey }) {
         ))}
       </div>
 
-      <Reveal className="mt-16">
+      {/* how we deliver */}
+      <section className="mt-24">
+        <Reveal>
+          <h2 className="text-3xl tracking-tight sm:text-4xl">{s.stepsHeading}</h2>
+        </Reveal>
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {page.steps.map((step, i) => (
+            <Reveal
+              key={step.t}
+              delay={(i % 4) * 70}
+              className="rounded-card bg-surface p-6 ring-line"
+            >
+              <span className="font-mono text-sm font-semibold text-accent">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <h3 className="mt-4 font-medium tracking-tight">{step.t}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted">{step.d}</p>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* faq */}
+      <section className="mt-24">
+        <Reveal>
+          <h2 className="text-3xl tracking-tight sm:text-4xl">{s.faqHeading}</h2>
+        </Reveal>
+        <div className="mx-auto mt-10 max-w-3xl divide-y divide-[color:var(--line)] border-y border-line">
+          {page.faq.map((f, i) => (
+            <Reveal as="div" key={f.q} delay={i * 30}>
+              <details className="group">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 [&::-webkit-details-marker]:hidden">
+                  <span className="font-medium text-fg">{f.q}</span>
+                  <Plus
+                    weight="bold"
+                    className="size-5 shrink-0 text-accent transition-transform duration-300 group-open:rotate-45"
+                  />
+                </summary>
+                <p className="pb-5 pr-9 text-sm leading-relaxed text-muted">{f.a}</p>
+              </details>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      <Reveal className="mt-24">
         <div className="flex flex-col items-start justify-between gap-6 rounded-card bg-fg p-8 text-bg sm:flex-row sm:items-center sm:p-10">
           <h2 className="max-w-xl text-2xl tracking-tight sm:text-3xl">
             {s.pageCtaTitle}

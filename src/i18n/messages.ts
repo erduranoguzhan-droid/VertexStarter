@@ -272,21 +272,59 @@ const tr = {
     backHome: "Ana sayfa",
     pageCtaTitle: "Size en uygun programı birlikte belirleyelim.",
     pageCtaButton: "Strateji görüşmesi",
+    stepsHeading: "Nasıl teslim ediyoruz",
+    faqHeading: "Sık sorulan sorular",
     pages: {
       systems: {
         title: "Kurulum Sistemleri",
         sub: "Destek, satış ve operasyonu yürüten AI sistemlerini uçtan uca kurar ve işletiriz.",
         intro: "İşinizin tekrar eden yükünü kaldıran, kendi bilgi tabanınıza bağlı ve ölçeklenen AI sistemleri. Her biri sabit kapsam, net süre ve fiyatla teslim edilir.",
+        steps: [
+          { t: "Keşif & kapsam", d: "İhtiyacınızı, verinizi ve araçlarınızı inceleyip sistemin kapsamını netleştiririz." },
+          { t: "Tasarım & bilgi tabanı", d: "Sistem mimarisini kurar, ürün ve süreç bilginizle AI'ı besleriz." },
+          { t: "Kurulum & entegrasyon", d: "Sistemi kurar, mevcut araçlarınıza bağlar ve gerçek verilerle test ederiz." },
+          { t: "Devreye alma & optimizasyon", d: "Canlıya alır, ekibinizi eğitir ve performansı sürekli iyileştiririz." },
+        ],
+        faq: [
+          { q: "Kurulum ne kadar sürer?", a: "Pakete göre 4-16 hafta. Kesin süreyi keşif görüşmesinde netleştiririz." },
+          { q: "Mevcut araçlarımla çalışır mı?", a: "Evet. CRM, e-ticaret ve mesajlaşma araçlarınızın üzerine akıllı bir katman kurarız." },
+          { q: "Sistem bize mi ait olur?", a: "Evet. Sistemi sizin sahipliğinizde kurar, dokümantasyon ve eğitim sağlarız." },
+          { q: "Kurulumdan sonra destek var mı?", a: "Evet. Teslim sonrası aylık bakım ve optimizasyon paketleri sunuyoruz." },
+        ],
       },
       advisory: {
         title: "Danışmanlık",
         sub: "Nereden başlayacağınızı ve neyi otomatikleştireceğinizi netleştiren strateji programları.",
         intro: "Trend peşinde koşmadan, işinizde gerçek etki yaratacak bir AI ve otomasyon yol haritası çıkarırız. Sabit kapsamlı ve ölçülebilir çıktılarla.",
+        steps: [
+          { t: "Teşhis görüşmesi", d: "Hedeflerinizi ve mevcut durumu dinler, önceliklerinizi çıkarırız." },
+          { t: "Keşif & analiz", d: "Süreçlerinizi, verinizi ve fırsatları derinlemesine inceleriz." },
+          { t: "Strateji geliştirme", d: "Ölçülebilir hedeflerle bir AI ve otomasyon yol haritası kurgularız." },
+          { t: "Teslim & sunum", d: "Yol haritasını, PRD'leri ve bütçe modelini net bir sunumla teslim ederiz." },
+        ],
+        faq: [
+          { q: "Danışmanlık sonunda elimde ne olur?", a: "Uygulanabilir bir yol haritası, önceliklendirilmiş projeler, PRD'ler ve bütçe modeli." },
+          { q: "Uygulamayı da siz mi yapıyorsunuz?", a: "İsterseniz. Strateji sonrası kurulumu Kurulum Sistemleri kapsamında üstlenebiliriz." },
+          { q: "Ne kadar sürüyor?", a: "Ana programlar 12 hafta; Hızlı Teşhis 2 hafta, Strateji Çalıştayı 1 gündür." },
+          { q: "Küçük ekipler için uygun mu?", a: "Evet. Hızlı Teşhis ve Strateji Çalıştayı küçük ekipler için idealdir." },
+        ],
       },
       inhouse: {
         title: "Kurum-içi",
         sub: "Ekibinizi AI ile çalışır hale getiren, uygulamalı eğitim ve dönüşüm programları.",
         intro: "Farkındalık eğitimi değil; ekibinizin AI'ı günlük işine güvenle entegre etmesini sağlayan, role özel ve uygulamalı bir program.",
+        steps: [
+          { t: "İhtiyaç analizi", d: "Ekibinizin rollerini ve mevcut AI olgunluğunu değerlendiririz." },
+          { t: "Programı özelleştirme", d: "İçeriği sektörünüze ve rollerinize göre uyarlarız." },
+          { t: "Uygulamalı eğitim", d: "Gerçek iş senaryolarıyla, uygulamalı ve rol bazlı eğitim veririz." },
+          { t: "Aksiyon planı & takip", d: "Eğitim sonrası aksiyon planı çıkarır ve ilerlemeyi takip ederiz." },
+        ],
+        faq: [
+          { q: "Eğitim nerede veriliyor?", a: "Yerinde veya çevrimiçi; ekibinizin tercihine göre esnek." },
+          { q: "Hangi rollere uygun?", a: "Yöneticilerden operasyon ekiplerine kadar, role özel içerikle herkese." },
+          { q: "Süre ne kadar?", a: "AI Okuryazarlığı 1-3 gün; Şirket Doktoru 4 fazlı bir süreçtir." },
+          { q: "Sertifika veriliyor mu?", a: "Katılım belgesi ve role özel bir prompt playbook'u sağlıyoruz." },
+        ],
       },
     },
     tracks: [
@@ -776,21 +814,59 @@ const en: Dict = {
     backHome: "Home",
     pageCtaTitle: "Let us define the right program for you together.",
     pageCtaButton: "Book Strategy Call",
+    stepsHeading: "How we deliver",
+    faqHeading: "Frequently asked questions",
     pages: {
       systems: {
         title: "Build Systems",
         sub: "We build and run AI systems that drive support, sales and operations, end to end.",
         intro: "Scalable AI systems connected to your own knowledge base that take the repetitive load off your business. Each is delivered with fixed scope, clear duration and price.",
+        steps: [
+          { t: "Discovery & scope", d: "We review your needs, data and tools and define the scope of the system." },
+          { t: "Design & knowledge base", d: "We build the system architecture and feed the AI with your product and process knowledge." },
+          { t: "Build & integration", d: "We set up the system, connect it to your existing tools and test it with real data." },
+          { t: "Launch & optimization", d: "We go live, train your team and continuously improve performance." },
+        ],
+        faq: [
+          { q: "How long does setup take?", a: "4-16 weeks depending on the package. We confirm the exact timeline in the discovery call." },
+          { q: "Does it work with my current tools?", a: "Yes. We add a smart layer on top of your CRM, e-commerce and messaging tools." },
+          { q: "Do we own the system?", a: "Yes. We build the system under your ownership and provide documentation and training." },
+          { q: "Is there support after setup?", a: "Yes. We offer monthly maintenance and optimization packages after delivery." },
+        ],
       },
       advisory: {
         title: "Advisory",
         sub: "Strategy programs that clarify where to start and what to automate.",
         intro: "Without chasing trends, we build an AI and automation roadmap that creates real impact in your business, with fixed scope and measurable outcomes.",
+        steps: [
+          { t: "Diagnosis call", d: "We listen to your goals and current state and surface your priorities." },
+          { t: "Discovery & analysis", d: "We examine your processes, data and opportunities in depth." },
+          { t: "Strategy development", d: "We design an AI and automation roadmap with measurable goals." },
+          { t: "Delivery & presentation", d: "We deliver the roadmap, PRDs and budget model in a clear presentation." },
+        ],
+        faq: [
+          { q: "What do I get at the end of advisory?", a: "An actionable roadmap, prioritized projects, PRDs and a budget model." },
+          { q: "Do you also do the implementation?", a: "If you wish. After strategy we can take on the build under Build Systems." },
+          { q: "How long does it take?", a: "Main programs run 12 weeks; Rapid Diagnosis is 2 weeks, the Strategy Workshop is 1 day." },
+          { q: "Is it suitable for small teams?", a: "Yes. Rapid Diagnosis and the Strategy Workshop are ideal for small teams." },
+        ],
       },
       inhouse: {
         title: "In-house",
         sub: "Applied training and transformation programs that make your team work with AI.",
         intro: "Not an awareness seminar; a role-specific, applied program that lets your team integrate AI into daily work with confidence.",
+        steps: [
+          { t: "Needs analysis", d: "We assess your team's roles and current AI maturity." },
+          { t: "Program customization", d: "We tailor the content to your industry and roles." },
+          { t: "Applied training", d: "We deliver hands-on, role-based training with real business scenarios." },
+          { t: "Action plan & follow-up", d: "We produce an action plan after training and track progress." },
+        ],
+        faq: [
+          { q: "Where is the training delivered?", a: "On-site or online; flexible to your team's preference." },
+          { q: "Which roles is it for?", a: "From executives to operations teams, everyone, with role-specific content." },
+          { q: "How long is it?", a: "AI Literacy is 1-3 days; Company Doctor is a 4-phase process." },
+          { q: "Is a certificate provided?", a: "We provide a certificate of participation and a role-specific prompt playbook." },
+        ],
       },
     },
     tracks: [
