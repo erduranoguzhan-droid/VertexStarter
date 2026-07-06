@@ -268,6 +268,27 @@ const tr = {
     sub: "Danışmanlıktan sistem kurulumuna, her ihtiyaç için sabit kapsamlı programlar. Süre ve fiyat baştan net.",
     filterAll: "Tüm paketler",
     cta: "Programa bak",
+    crumb: "PROGRAMLAR",
+    backHome: "Ana sayfa",
+    pageCtaTitle: "Size en uygun programı birlikte belirleyelim.",
+    pageCtaButton: "Strateji görüşmesi",
+    pages: {
+      systems: {
+        title: "Kurulum Sistemleri",
+        sub: "Destek, satış ve operasyonu yürüten AI sistemlerini uçtan uca kurar ve işletiriz.",
+        intro: "İşinizin tekrar eden yükünü kaldıran, kendi bilgi tabanınıza bağlı ve ölçeklenen AI sistemleri. Her biri sabit kapsam, net süre ve fiyatla teslim edilir.",
+      },
+      advisory: {
+        title: "Danışmanlık",
+        sub: "Nereden başlayacağınızı ve neyi otomatikleştireceğinizi netleştiren strateji programları.",
+        intro: "Trend peşinde koşmadan, işinizde gerçek etki yaratacak bir AI ve otomasyon yol haritası çıkarırız. Sabit kapsamlı ve ölçülebilir çıktılarla.",
+      },
+      inhouse: {
+        title: "Kurum-içi",
+        sub: "Ekibinizi AI ile çalışır hale getiren, uygulamalı eğitim ve dönüşüm programları.",
+        intro: "Farkındalık eğitimi değil; ekibinizin AI'ı günlük işine güvenle entegre etmesini sağlayan, role özel ve uygulamalı bir program.",
+      },
+    },
     tracks: [
       { key: "systems", label: "Kurulum Sistemleri" },
       { key: "advisory", label: "Danışmanlık" },
@@ -443,6 +464,9 @@ const tr = {
     industries: "Sektörler",
     company: "Kurumsal",
     companyLinks: [
+      { href: "/sistemler", label: "Kurulum Sistemleri" },
+      { href: "/danismanlik", label: "Danışmanlık" },
+      { href: "/kurum-ici", label: "Kurum-içi" },
       { href: "/#ai-employees", label: "AI Çalışanlar" },
       { href: "/#entegrasyonlar", label: "Entegrasyonlar" },
       { href: "/#surec", label: "Süreç" },
@@ -748,6 +772,27 @@ const en: Dict = {
     sub: "From advisory to system build, fixed-scope programs for every need. Duration and price clear upfront.",
     filterAll: "All packages",
     cta: "View program",
+    crumb: "PROGRAMS",
+    backHome: "Home",
+    pageCtaTitle: "Let us define the right program for you together.",
+    pageCtaButton: "Book Strategy Call",
+    pages: {
+      systems: {
+        title: "Build Systems",
+        sub: "We build and run AI systems that drive support, sales and operations, end to end.",
+        intro: "Scalable AI systems connected to your own knowledge base that take the repetitive load off your business. Each is delivered with fixed scope, clear duration and price.",
+      },
+      advisory: {
+        title: "Advisory",
+        sub: "Strategy programs that clarify where to start and what to automate.",
+        intro: "Without chasing trends, we build an AI and automation roadmap that creates real impact in your business, with fixed scope and measurable outcomes.",
+      },
+      inhouse: {
+        title: "In-house",
+        sub: "Applied training and transformation programs that make your team work with AI.",
+        intro: "Not an awareness seminar; a role-specific, applied program that lets your team integrate AI into daily work with confidence.",
+      },
+    },
     tracks: [
       { key: "systems", label: "Build Systems" },
       { key: "advisory", label: "Advisory" },
@@ -923,6 +968,9 @@ const en: Dict = {
     industries: "Industries",
     company: "Company",
     companyLinks: [
+      { href: "/sistemler", label: "Build Systems" },
+      { href: "/danismanlik", label: "Advisory" },
+      { href: "/kurum-ici", label: "In-house" },
       { href: "/#ai-employees", label: "AI Employees" },
       { href: "/#entegrasyonlar", label: "Integrations" },
       { href: "/#surec", label: "Process" },
