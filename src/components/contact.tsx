@@ -5,7 +5,7 @@ import {
   VideoCamera,
 } from "@phosphor-icons/react/dist/ssr";
 import { Reveal } from "@/components/reveal";
-import { CalBooking } from "@/components/cal-booking";
+import { ContactPanel } from "@/components/contact-panel";
 import { site } from "@/lib/site";
 import { getDict } from "@/lib/i18n";
 
@@ -72,7 +72,19 @@ export async function Contact() {
           </Reveal>
 
           <Reveal delay={80}>
-            <CalBooking />
+            <ContactPanel
+              labels={{
+                tabBook: c.tabBook,
+                tabMessage: c.tabMessage,
+                formName: c.formName,
+                formCompany: c.formCompany,
+                formEmail: c.formEmail,
+                formMessage: c.formMessage,
+                formSend: c.formSend,
+                formWhatsapp: c.formWhatsapp,
+                formNote: c.formNote,
+              }}
+            />
           </Reveal>
         </div>
       </div>
