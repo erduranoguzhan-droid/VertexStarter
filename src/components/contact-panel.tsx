@@ -21,7 +21,9 @@ type Labels = {
 const waHref = `https://wa.me/${site.phoneHref.replace(/\D/g, "")}`;
 
 export function ContactPanel({ labels }: { labels: Labels }) {
-  const [tab, setTab] = useState<"book" | "message">("book");
+  // Cal.com etkinligi yayina alinana kadar varsayilan sekme "message";
+  // canli olunca "book" yapin.
+  const [tab, setTab] = useState<"book" | "message">("message");
   const [form, setForm] = useState({ name: "", company: "", email: "", message: "" });
 
   const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>

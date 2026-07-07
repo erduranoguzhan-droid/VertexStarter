@@ -6,6 +6,8 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { FloatingCta } from "@/components/floating-cta";
 import { CookieConsent } from "@/components/cookie-consent";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const roboto = Roboto({
@@ -92,6 +94,8 @@ export default async function RootLayout({
           more={t.cookie.more}
         />
         <Footer />
+        <Analytics />
+        <SpeedInsights />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}

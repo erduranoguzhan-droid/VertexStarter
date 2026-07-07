@@ -32,6 +32,12 @@ const tr = {
       "Destek, satış, randevu ve operasyon için 7/24 çalışan AI çalışanlar kuruyoruz. Otomasyon sistemlerinizi uçtan uca kurar ve işletiriz.",
     primary: "Strateji görüşmesi",
     secondary: "Vaka çalışmaları",
+    trust: [
+      "KVKK uyumlu",
+      "Google Meet · 30 dk ücretsiz",
+      "Resmi WhatsApp Business API",
+      "100+ entegrasyon",
+    ],
   },
   stats: [
     { k: "12", v: "Uçtan uca hizmet" },
@@ -609,6 +615,12 @@ const en: Dict = {
       "We build AI employees that work 24/7 for support, sales, appointments and operations. We set up and run your automation systems end to end.",
     primary: "Book Strategy Call",
     secondary: "See Case Studies",
+    trust: [
+      "KVKK compliant",
+      "Google Meet · 30 min free",
+      "Official WhatsApp Business API",
+      "100+ integrations",
+    ],
   },
   stats: [
     { k: "12", v: "End-to-end services" },

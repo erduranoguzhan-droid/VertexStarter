@@ -1,3 +1,4 @@
+import { Check } from "@phosphor-icons/react/dist/ssr";
 import { HeroContent } from "@/components/hero-content";
 import { getDict } from "@/lib/i18n";
 
@@ -29,6 +30,15 @@ export async function Hero() {
           primary={h.primary}
           secondary={h.secondary}
         />
+
+        <ul className="mt-12 flex flex-wrap gap-x-6 gap-y-3">
+          {h.trust.map((item) => (
+            <li key={item} className="flex items-center gap-2 text-sm text-muted">
+              <Check weight="bold" className="size-4 text-accent" />
+              {item}
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
