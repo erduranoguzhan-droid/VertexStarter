@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { MagnifyingGlass, ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 import { cn } from "@/lib/utils";
 import type { Post } from "@/lib/blog";
@@ -84,13 +85,15 @@ export function BlogIndex({
               href={`/blog/${p.slug}`}
               className="group flex flex-col overflow-hidden rounded-card bg-surface ring-line transition-colors hover:bg-surface-2"
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={`/generated/${p.seed}.jpg`}
-                alt={p.title}
-                loading="lazy"
-                className="h-48 w-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0"
-              />
+              <div className="relative h-48 w-full overflow-hidden">
+                <Image
+                  src={`/generated/${p.seed}.jpg`}
+                  alt={p.title}
+                  fill
+                  sizes="(max-width: 640px) 100vw, 50vw"
+                  className="object-cover grayscale transition-all duration-500 group-hover:grayscale-0"
+                />
+              </div>
               <div className="flex flex-1 flex-col p-6">
                 <div className="flex items-center gap-3 text-xs text-faint">
                   <span className="font-mono tracking-wide text-accent">{p.category}</span>

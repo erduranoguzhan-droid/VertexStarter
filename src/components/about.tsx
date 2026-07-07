@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Brain, Target, Gauge, ArrowsClockwise } from "@phosphor-icons/react/dist/ssr";
 import type { Icon } from "@phosphor-icons/react";
 import { Reveal } from "@/components/reveal";
@@ -24,13 +25,13 @@ export async function About() {
           </Reveal>
 
           <Reveal delay={80}>
-            <div className="overflow-hidden rounded-card ring-line">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+            <div className="relative aspect-[4/3] overflow-hidden rounded-card ring-line">
+              <Image
                 src="/generated/vertexstarter-studio-team.jpg"
                 alt={a.imgAlt}
-                loading="lazy"
-                className="h-full w-full object-cover grayscale transition-all duration-500 hover:grayscale-0"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover grayscale transition-all duration-500 hover:grayscale-0"
               />
             </div>
           </Reveal>

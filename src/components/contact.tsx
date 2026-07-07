@@ -83,6 +83,10 @@ export async function Contact() {
                 formSend: c.formSend,
                 formWhatsapp: c.formWhatsapp,
                 formNote: c.formNote,
+                formSending: c.formSending,
+                formSuccessTitle: c.formSuccessTitle,
+                formSuccessText: c.formSuccessText,
+                formAnother: c.formAnother,
               }}
             />
           </Reveal>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 import { postSlugs, getPost, relatedPosts } from "@/lib/blog";
@@ -88,12 +89,16 @@ export default async function PostPage({
         </div>
 
         <div className="mx-auto mt-10 max-w-4xl px-5 sm:px-8">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={`/generated/${post.seed}.jpg`}
-            alt={post.title}
-            className="aspect-[16/9] w-full rounded-card object-cover"
-          />
+          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-card">
+            <Image
+              src={`/generated/${post.seed}.jpg`}
+              alt={post.title}
+              fill
+              priority
+              sizes="(max-width: 896px) 100vw, 896px"
+              className="object-cover"
+            />
+          </div>
         </div>
 
         <div className="mx-auto mt-12 max-w-3xl px-5 sm:px-8">
@@ -130,13 +135,15 @@ export default async function PostPage({
                   href={`/blog/${p.slug}`}
                   className="group flex flex-col overflow-hidden rounded-card bg-surface ring-line transition-colors hover:bg-surface-2"
                 >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={`/generated/${p.seed}.jpg`}
-                    alt={p.title}
-                    loading="lazy"
-                    className="h-40 w-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0"
-                  />
+                  <div className="relative h-40 w-full overflow-hidden">
+                    <Image
+                      src={`/generated/${p.seed}.jpg`}
+                      alt={p.title}
+                      fill
+                      sizes="(max-width: 640px) 100vw, 50vw"
+                      className="object-cover grayscale transition-all duration-500 group-hover:grayscale-0"
+                    />
+                  </div>
                   <div className="p-6">
                     <span className="font-mono text-xs tracking-wide text-accent">
                       {p.category}

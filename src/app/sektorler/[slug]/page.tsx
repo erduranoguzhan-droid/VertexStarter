@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import {
   XCircle,
@@ -55,12 +56,14 @@ export default async function IndustryPage({
     <main className="pt-16">
       <section className="relative overflow-hidden border-b border-line">
         <div className="absolute inset-0 -z-10">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src={`/generated/${ind.seed}.jpg`}
             alt=""
             aria-hidden="true"
-            className="h-full w-full object-cover opacity-20 grayscale"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover opacity-20 grayscale"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/85 to-bg/70" />
         </div>

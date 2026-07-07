@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Reveal } from "@/components/reveal";
 import { getDict } from "@/lib/i18n";
 
@@ -25,15 +26,17 @@ type Card = {
 function CaseCard({ c }: { c: Card }) {
   return (
     <div className="group relative flex h-full flex-col overflow-hidden rounded-card bg-surface ring-line">
-      <div className="relative overflow-hidden">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+      <div
+        className={`relative overflow-hidden ${
+          c.featured ? "h-64 sm:h-80" : "h-44"
+        }`}
+      >
+        <Image
           src={`/generated/${c.seed}.jpg`}
           alt={c.title}
-          loading="lazy"
-          className={`w-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0 ${
-            c.featured ? "h-64 sm:h-80" : "h-44"
-          }`}
+          fill
+          sizes="(max-width: 1024px) 100vw, 66vw"
+          className="object-cover grayscale transition-all duration-500 group-hover:grayscale-0"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-surface to-transparent" />
       </div>
