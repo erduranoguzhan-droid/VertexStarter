@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/components/link";
 import { ArrowRight, Star, Check } from "@phosphor-icons/react/dist/ssr";
 import type { Dict } from "@/i18n/messages";
 

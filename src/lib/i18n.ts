@@ -1,4 +1,4 @@
-import { cookies } from "next/headers";
+import { headers } from "next/headers";
 import {
   messages,
   defaultLocale,
@@ -6,11 +6,9 @@ import {
   type Locale,
 } from "@/i18n/messages";
 
-export const LOCALE_COOKIE = "locale";
-
 export async function getLocale(): Promise<Locale> {
-  const store = await cookies();
-  const value = store.get(LOCALE_COOKIE)?.value;
+  const store = await headers();
+  const value = store.get("x-locale");
   return value === "en" ? "en" : "tr";
 }
 

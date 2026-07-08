@@ -14,7 +14,6 @@ export async function generateMetadata(): Promise<Metadata> {
     description: en
       ? "The terms governing your use of the VertexStarter website and services."
       : "VertexStarter web sitesini ve hizmetlerini kullanımınızı düzenleyen koşullar.",
-    alternates: { canonical: "/kosullar" },
   };
 }
 

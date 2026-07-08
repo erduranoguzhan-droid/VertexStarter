@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/components/link";
 import { ArrowUpRight, ArrowLeft, Plus } from "@phosphor-icons/react/dist/ssr";
 import { Reveal } from "@/components/reveal";
 import { ProgramCard, ShopifyCard } from "@/components/program-cards";

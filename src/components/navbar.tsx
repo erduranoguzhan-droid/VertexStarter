@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
+import { Link } from "@/components/link";
 import { List, X, ArrowUpRight, CaretDown } from "@phosphor-icons/react/dist/ssr";
 import { cn } from "@/lib/utils";
 import { site } from "@/lib/site";

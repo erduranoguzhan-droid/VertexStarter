@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Link from "next/link";
+import { Link } from "@/components/link";
 import Image from "next/image";
 import { MagnifyingGlass, ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 import { cn } from "@/lib/utils";

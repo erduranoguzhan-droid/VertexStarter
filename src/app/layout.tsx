@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { Roboto, Playfair_Display, JetBrains_Mono } from "next/font/google";
 import { site } from "@/lib/site";
 import { getDict } from "@/lib/i18n";
+import { localizedHref } from "@/i18n/routing";
+import { LocaleProvider } from "@/components/locale-provider";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { FloatingCta } from "@/components/floating-cta";
@@ -30,6 +33,10 @@ const jetbrainsMono = JetBrains_Mono({
 export async function generateMetadata(): Promise<Metadata> {
   const { locale } = await getDict();
   const en = locale === "en";
+  const h = await headers();
+  const path = h.get("x-pathname") || "/";
+  const trUrl = localizedHref(path, "tr");
+  const enUrl = localizedHref(path, "en");
   const title = en
     ? `${site.name} - AI, Automation and Data Systems`
     : `${site.name} - Yapay Zeka, Otomasyon ve Veri Sistemleri`;
@@ -40,7 +47,10 @@ export async function generateMetadata(): Promise<Metadata> {
     metadataBase: new URL(site.url),
     title: { default: title, template: `%s | ${site.name}` },
     description,
-    alternates: { canonical: "/" },
+    alternates: {
+      canonical: en ? enUrl : trUrl,
+      languages: { tr: trUrl, en: enUrl, "x-default": trUrl },
+    },
     openGraph: {
       title,
       description,
@@ -80,20 +90,22 @@ export default async function RootLayout({
       className={`${roboto.variable} ${playfair.variable} ${jetbrainsMono.variable}`}
     >
       <body className="min-h-dvh overflow-x-hidden">
-        <div className="grain" aria-hidden="true" />
-        <Navbar dict={t.nav} locale={locale} />
-        {children}
-        <FloatingCta
-          cta={t.nav.cta}
-          whatsapp={locale === "en" ? "Message us on WhatsApp" : "WhatsApp'tan yazın"}
-        />
-        <CookieConsent
-          text={t.cookie.text}
-          accept={t.cookie.accept}
-          reject={t.cookie.reject}
-          more={t.cookie.more}
-        />
-        <Footer />
+        <LocaleProvider locale={locale}>
+          <div className="grain" aria-hidden="true" />
+          <Navbar dict={t.nav} locale={locale} />
+          {children}
+          <FloatingCta
+            cta={t.nav.cta}
+            whatsapp={locale === "en" ? "Message us on WhatsApp" : "WhatsApp'tan yazın"}
+          />
+          <CookieConsent
+            text={t.cookie.text}
+            accept={t.cookie.accept}
+            reject={t.cookie.reject}
+            more={t.cookie.more}
+          />
+          <Footer />
+        </LocaleProvider>
         <Analytics />
         <SpeedInsights />
         <script

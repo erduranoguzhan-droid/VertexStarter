@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Link } from "@/components/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import {
@@ -35,7 +35,6 @@ export async function generateMetadata({
   return {
     title,
     description: ind.intro,
-    alternates: { canonical: `/sektorler/${ind.slug}` },
     openGraph: { title: `${title} | ${site.name}`, description: ind.intro },
   };
 }

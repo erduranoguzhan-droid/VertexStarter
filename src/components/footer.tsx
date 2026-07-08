@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/components/link";
 import { site } from "@/lib/site";
 import { getDict } from "@/lib/i18n";
 import { getIndustries } from "@/lib/industries";

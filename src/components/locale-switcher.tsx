@@ -1,8 +1,9 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useTransition } from "react";
 import { cn } from "@/lib/utils";
+import { neutralPath, localizedHref } from "@/i18n/routing";
 import type { Locale } from "@/i18n/messages";
 
 const options: { code: Locale; label: string }[] = [
@@ -12,12 +13,14 @@ const options: { code: Locale; label: string }[] = [
 
 export function LocaleSwitcher({ locale }: { locale: Locale }) {
   const router = useRouter();
+  const pathname = usePathname();
   const [pending, startTransition] = useTransition();
 
   function set(code: Locale) {
     if (code === locale) return;
-    document.cookie = `locale=${code}; path=/; max-age=31536000; samesite=lax`;
-    startTransition(() => router.refresh());
+    const base = neutralPath(pathname || "/");
+    const target = localizedHref(base, code);
+    startTransition(() => router.push(target));
   }
 
   return (

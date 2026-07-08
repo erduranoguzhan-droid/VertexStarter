@@ -3,32 +3,42 @@ import { site } from "@/lib/site";
 import { industrySlugs } from "@/lib/industries";
 import { getPosts } from "@/lib/blog";
 
+type Freq = NonNullable<MetadataRoute.Sitemap[number]["changeFrequency"]>;
+type Entry = { path: string; priority: number; freq: Freq; lastMod?: Date };
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
-  const staticRoutes: MetadataRoute.Sitemap = [
-    { url: site.url, lastModified: now, changeFrequency: "weekly", priority: 1 },
-    { url: `${site.url}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
-    { url: `${site.url}/sistemler`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${site.url}/danismanlik`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${site.url}/kurum-ici`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${site.url}/gizlilik`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
-    { url: `${site.url}/kosullar`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
+  const entries: Entry[] = [
+    { path: "/", priority: 1, freq: "weekly" },
+    { path: "/blog", priority: 0.8, freq: "weekly" },
+    { path: "/sistemler", priority: 0.8, freq: "monthly" },
+    { path: "/danismanlik", priority: 0.8, freq: "monthly" },
+    { path: "/kurum-ici", priority: 0.8, freq: "monthly" },
+    { path: "/gizlilik", priority: 0.3, freq: "yearly" },
+    { path: "/kosullar", priority: 0.3, freq: "yearly" },
+    ...industrySlugs.map((slug): Entry => ({
+      path: `/sektorler/${slug}`,
+      priority: 0.7,
+      freq: "monthly",
+    })),
+    ...getPosts("tr").map((p): Entry => ({
+      path: `/blog/${p.slug}`,
+      priority: 0.6,
+      freq: "monthly",
+      lastMod: new Date(p.date),
+    })),
   ];
 
-  const industryRoutes: MetadataRoute.Sitemap = industrySlugs.map((slug) => ({
-    url: `${site.url}/sektorler/${slug}`,
-    lastModified: now,
-    changeFrequency: "monthly",
-    priority: 0.7,
-  }));
+  const en = (path: string) => `${site.url}/en${path === "/" ? "" : path}`;
 
-  const postRoutes: MetadataRoute.Sitemap = getPosts("tr").map((p) => ({
-    url: `${site.url}/blog/${p.slug}`,
-    lastModified: new Date(p.date),
-    changeFrequency: "monthly",
-    priority: 0.6,
+  return entries.map(({ path, priority, freq, lastMod }) => ({
+    url: `${site.url}${path}`,
+    lastModified: lastMod ?? now,
+    changeFrequency: freq,
+    priority,
+    alternates: {
+      languages: { tr: `${site.url}${path}`, en: en(path) },
+    },
   }));
-
-  return [...staticRoutes, ...industryRoutes, ...postRoutes];
 }

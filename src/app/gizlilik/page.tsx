@@ -14,7 +14,6 @@ export async function generateMetadata(): Promise<Metadata> {
     description: en
       ? "How VertexStarter processes your personal data in line with KVKK and applicable law."
       : "VertexStarter olarak kişisel verilerinizi KVKK ve ilgili mevzuata uygun nasıl işlediğimiz.",
-    alternates: { canonical: "/gizlilik" },
   };
 }
 
