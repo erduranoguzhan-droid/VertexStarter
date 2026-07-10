@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const entries: Entry[] = [
     { path: "/", priority: 1, freq: "weekly" },
+    { path: "/hizmetler", priority: 0.9, freq: "monthly" },
     { path: "/blog", priority: 0.8, freq: "weekly" },
     { path: "/sistemler", priority: 0.8, freq: "monthly" },
     { path: "/danismanlik", priority: 0.8, freq: "monthly" },

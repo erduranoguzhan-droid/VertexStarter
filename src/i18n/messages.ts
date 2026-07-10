@@ -5,7 +5,7 @@ export const defaultLocale: Locale = "tr";
 const tr = {
   nav: {
     links: [
-      { href: "/#ai-employees", label: "AI Çalışanlar" },
+      { href: "/hizmetler", label: "Hizmetler" },
       { href: "/#entegrasyonlar", label: "Entegrasyonlar" },
       { href: "/#paketler", label: "Paketler" },
       { href: "/#vakalar", label: "Vakalar" },
@@ -592,6 +592,9 @@ const tr = {
     features: "Neler yapıyoruz",
     faqHeading: "Sık sorulan sorular",
     other: "Diğer hizmetler",
+    indexHeading: "AI ile büyüten uçtan uca hizmetler.",
+    indexSub: "Müşteri bulmadan özel yazılıma kadar, işinizin her aşaması için tasarlanmış AI çözümleri.",
+    explore: "İncele",
   },
 };
 
@@ -600,7 +603,7 @@ export type Dict = typeof tr;
 const en: Dict = {
   nav: {
     links: [
-      { href: "/#ai-employees", label: "AI Employees" },
+      { href: "/hizmetler", label: "Services" },
       { href: "/#entegrasyonlar", label: "Integrations" },
       { href: "/#paketler", label: "Pricing" },
       { href: "/#vakalar", label: "Case Studies" },
@@ -1187,6 +1190,9 @@ const en: Dict = {
     features: "What we do",
     faqHeading: "Frequently asked questions",
     other: "Other services",
+    indexHeading: "End-to-end services that grow you with AI.",
+    indexSub: "From lead generation to custom software, AI solutions designed for every stage of your business.",
+    explore: "Explore",
   },
 };
 
