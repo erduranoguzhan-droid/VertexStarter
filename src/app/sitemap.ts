@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/lib/site";
 import { industrySlugs } from "@/lib/industries";
+import { serviceSlugs } from "@/lib/services";
 import { getPosts } from "@/lib/blog";
 
 type Freq = NonNullable<MetadataRoute.Sitemap[number]["changeFrequency"]>;
@@ -17,6 +18,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/kurum-ici", priority: 0.8, freq: "monthly" },
     { path: "/gizlilik", priority: 0.3, freq: "yearly" },
     { path: "/kosullar", priority: 0.3, freq: "yearly" },
+    ...serviceSlugs.map((slug): Entry => ({
+      path: `/hizmetler/${slug}`,
+      priority: 0.8,
+      freq: "monthly",
+    })),
     ...industrySlugs.map((slug): Entry => ({
       path: `/sektorler/${slug}`,
       priority: 0.7,

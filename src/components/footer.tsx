@@ -2,16 +2,18 @@ import { Link } from "@/components/link";
 import { site } from "@/lib/site";
 import { getDict } from "@/lib/i18n";
 import { getIndustries } from "@/lib/industries";
+import { getServices } from "@/lib/services";
 
 export async function Footer() {
   const { locale, t } = await getDict();
   const f = t.footer;
   const industries = getIndustries(locale);
+  const services = getServices(locale);
 
   return (
     <footer className="border-t border-line">
       <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8">
-        <div className="grid gap-12 md:grid-cols-[1.5fr_1fr_1fr]">
+        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
           <div>
             <span className="text-xl font-semibold tracking-tight">
               Vertex<span className="text-accent">Starter</span>
@@ -28,6 +30,22 @@ export async function Footer() {
               </a>
               <p>{site.address}</p>
             </div>
+          </div>
+
+          <div>
+            <h4 className="text-sm font-medium text-fg">{f.services}</h4>
+            <ul className="mt-5 space-y-3">
+              {services.slice(0, 6).map((s) => (
+                <li key={s.slug}>
+                  <Link
+                    href={`/hizmetler/${s.slug}`}
+                    className="text-sm text-muted transition-colors hover:text-accent"
+                  >
+                    {s.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div>

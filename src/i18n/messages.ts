@@ -526,6 +526,7 @@ const tr = {
   },
   footer: {
     tagline: "Yapay zeka, otomasyon ve veri sistemleriyle şirketinizi büyütüyoruz.",
+    services: "Hizmetler",
     industries: "Sektörler",
     company: "Kurumsal",
     companyLinks: [
@@ -584,6 +585,13 @@ const tr = {
     title: "Sayfa bulunamadı",
     sub: "Aradığınız sayfa taşınmış veya hiç var olmamış olabilir. Ana sayfadan devam edebilirsiniz.",
     home: "Ana sayfaya dön",
+  },
+  servicePage: {
+    crumb: "HİZMETLER",
+    benefits: "Faydalar",
+    features: "Neler yapıyoruz",
+    faqHeading: "Sık sorulan sorular",
+    other: "Diğer hizmetler",
   },
 };
 
@@ -1113,6 +1121,7 @@ const en: Dict = {
   },
   footer: {
     tagline: "We grow your company with AI, automation and data systems.",
+    services: "Services",
     industries: "Industries",
     company: "Company",
     companyLinks: [
@@ -1171,6 +1180,13 @@ const en: Dict = {
     title: "Page not found",
     sub: "The page you are looking for may have moved or never existed. You can continue from the homepage.",
     home: "Back to homepage",
+  },
+  servicePage: {
+    crumb: "SERVICES",
+    benefits: "Benefits",
+    features: "What we do",
+    faqHeading: "Frequently asked questions",
+    other: "Other services",
   },
 };
 
