@@ -45,7 +45,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: freq,
     priority,
     alternates: {
-      languages: { tr: `${site.url}${path}`, en: en(path) },
+      languages: {
+        tr: `${site.url}${path}`,
+        en: en(path),
+        "x-default": `${site.url}${path}`,
+      },
     },
   }));
 }

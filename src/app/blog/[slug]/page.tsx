@@ -3,9 +3,10 @@ import { Link } from "@/components/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
+import { JsonLd } from "@/components/json-ld";
 import { postSlugs, getPost, relatedPosts } from "@/lib/blog";
 import { getDict, getLocale } from "@/lib/i18n";
-import { site } from "@/lib/site";
+import { articleSchema, breadcrumbSchema } from "@/lib/schema";
 
 export function generateStaticParams() {
   return postSlugs.map((slug) => ({ slug }));
@@ -49,19 +50,30 @@ export default async function PostPage({
     { day: "numeric", month: "long", year: "numeric" }
   );
 
-  const articleSchema = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: post.title,
-    description: post.excerpt,
-    datePublished: post.date,
-    author: { "@type": "Organization", name: post.author },
-    publisher: { "@type": "Organization", name: site.name },
-    mainEntityOfPage: `${site.url}/blog/${post.slug}`,
-  };
+  const schema = [
+    articleSchema({
+      title: post.title,
+      description: post.excerpt,
+      path: `/blog/${post.slug}`,
+      image: `/generated/${post.seed}.jpg`,
+      datePublished: post.date,
+      author: post.author,
+      section: post.category,
+      body: post.body,
+      locale,
+    }),
+    breadcrumbSchema(
+      [
+        { name: "Blog", path: "/blog" },
+        { name: post.title, path: `/blog/${post.slug}` },
+      ],
+      locale
+    ),
+  ];
 
   return (
     <main className="pt-16">
+      <JsonLd data={schema} />
       <article className="py-16 sm:py-24">
         <div className="mx-auto max-w-3xl px-5 sm:px-8">
           <Link
@@ -158,10 +170,6 @@ export default async function PostPage({
         </section>
       )}
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-      />
     </main>
   );
 }

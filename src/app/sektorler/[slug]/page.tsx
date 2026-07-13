@@ -11,9 +11,11 @@ import {
   Plus,
 } from "@phosphor-icons/react/dist/ssr";
 import { Reveal } from "@/components/reveal";
+import { JsonLd } from "@/components/json-ld";
 import { industrySlugs, getIndustries, getIndustry } from "@/lib/industries";
 import { getDict, getLocale } from "@/lib/i18n";
 import { site } from "@/lib/site";
+import { serviceSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
 
 export function generateStaticParams() {
   return industrySlugs.map((slug) => ({ slug }));
@@ -51,8 +53,25 @@ export default async function IndustryPage({
   const ip = t.industryPage;
   const others = getIndustries(locale).filter((i) => i.slug !== ind.slug);
 
+  const heading =
+    locale === "en"
+      ? `AI and Automation Solutions for ${ind.name}`
+      : `${ind.name} için Yapay Zeka ve Otomasyon Çözümleri`;
+  const schema = [
+    serviceSchema({
+      name: heading,
+      description: ind.intro,
+      path: `/sektorler/${ind.slug}`,
+      image: `/generated/${ind.seed}.jpg`,
+      locale,
+    }),
+    faqSchema(ip.faq, locale),
+    breadcrumbSchema([{ name: ind.name, path: `/sektorler/${ind.slug}` }], locale),
+  ];
+
   return (
     <main className="pt-16">
+      <JsonLd data={schema} />
       <section className="relative overflow-hidden border-b border-line">
         <div className="absolute inset-0 -z-10">
           <Image

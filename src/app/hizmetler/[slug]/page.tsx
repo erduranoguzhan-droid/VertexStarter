@@ -10,9 +10,11 @@ import {
   Plus,
 } from "@phosphor-icons/react/dist/ssr";
 import { Reveal } from "@/components/reveal";
+import { JsonLd } from "@/components/json-ld";
 import { serviceSlugs, getServices, getService } from "@/lib/services";
 import { getDict, getLocale } from "@/lib/i18n";
 import { site } from "@/lib/site";
+import { serviceSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
 
 export function generateStaticParams() {
   return serviceSlugs.map((slug) => ({ slug }));
@@ -46,14 +48,23 @@ export default async function ServicePage({
   const sp = t.servicePage;
   const others = getServices(locale).filter((x) => x.slug !== s.slug);
 
-  const serviceSchema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: s.name,
-    description: s.tagline,
-    provider: { "@type": "Organization", name: site.name, url: site.url },
-    areaServed: "TR",
-  };
+  const schema = [
+    serviceSchema({
+      name: s.name,
+      description: s.tagline,
+      path: `/hizmetler/${s.slug}`,
+      image: `/generated/${s.seed}.jpg`,
+      locale,
+    }),
+    faqSchema(s.faq, locale),
+    breadcrumbSchema(
+      [
+        { name: t.footer.services, path: "/hizmetler" },
+        { name: s.name, path: `/hizmetler/${s.slug}` },
+      ],
+      locale
+    ),
+  ];
 
   return (
     <main className="pt-16">
@@ -181,10 +192,7 @@ export default async function ServicePage({
         </div>
       </section>
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
-      />
+      <JsonLd data={schema} />
     </main>
   );
 }

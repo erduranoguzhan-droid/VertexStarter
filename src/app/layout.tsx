@@ -1,9 +1,11 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { headers } from "next/headers";
 import { Roboto, Playfair_Display, JetBrains_Mono } from "next/font/google";
 import { site } from "@/lib/site";
 import { getDict } from "@/lib/i18n";
 import { localizedHref } from "@/i18n/routing";
+import { organizationSchema, websiteSchema } from "@/lib/schema";
+import { JsonLd } from "@/components/json-ld";
 import { LocaleProvider } from "@/components/locale-provider";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
@@ -43,41 +45,56 @@ export async function generateMetadata(): Promise<Metadata> {
   const description = en
     ? "VertexStarter turns companies' data into growth systems with AI, automation and data systems. A technology studio based in Corlu, Tekirdag."
     : site.description;
+  const keywords = en
+    ? ["AI agents", "AI automation", "data systems", "workflow automation", "CRM automation", "AI customer support", "lead generation", "VertexStarter", "Turkey"]
+    : ["yapay zeka", "AI ajanları", "otomasyon", "veri sistemleri", "iş akışı otomasyonu", "CRM otomasyonu", "yapay zeka müşteri desteği", "müşteri bulma", "VertexStarter", "Çorlu", "Tekirdağ"];
   return {
     metadataBase: new URL(site.url),
     title: { default: title, template: `%s | ${site.name}` },
     description,
+    applicationName: site.name,
+    authors: [{ name: site.name, url: site.url }],
+    creator: site.name,
+    publisher: site.name,
+    keywords,
+    category: "technology",
+    referrer: "origin-when-cross-origin",
+    formatDetection: { email: false, address: false, telephone: false },
     alternates: {
       canonical: en ? enUrl : trUrl,
       languages: { tr: trUrl, en: enUrl, "x-default": trUrl },
+      types: { "application/rss+xml": `${site.url}/feed.xml` },
     },
     openGraph: {
       title,
       description,
-      url: site.url,
+      url: en ? enUrl : trUrl,
       siteName: site.name,
       locale: en ? "en_US" : "tr_TR",
       type: "website",
     },
-    robots: { index: true, follow: true },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
   };
 }
 
-const orgSchema = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: site.name,
-  url: site.url,
-  email: site.email,
-  telephone: "+905366722853",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Ali Paşa Mah.",
-    addressLocality: "Çorlu",
-    addressRegion: "Tekirdağ",
-    addressCountry: "TR",
-  },
-  description: site.description,
+export const viewport: Viewport = {
+  themeColor: "#f5f4f0",
+  colorScheme: "light",
 };
 
 export default async function RootLayout({
@@ -108,10 +125,7 @@ export default async function RootLayout({
         </LocaleProvider>
         <Analytics />
         <SpeedInsights />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
-        />
+        <JsonLd data={[organizationSchema(locale), websiteSchema(locale)]} />
       </body>
     </html>
   );

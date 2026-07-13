@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import { Link } from "@/components/link";
 import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 import { Reveal } from "@/components/reveal";
+import { JsonLd } from "@/components/json-ld";
 import { getServices } from "@/lib/services";
 import { getDict } from "@/lib/i18n";
+import { itemListSchema, breadcrumbSchema } from "@/lib/schema";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { t } = await getDict();
@@ -18,8 +20,19 @@ export default async function ServicesIndex() {
   const sp = t.servicePage;
   const services = getServices(locale);
 
+  const schema = [
+    itemListSchema({
+      name: t.footer.services,
+      path: "/hizmetler",
+      items: services.map((s) => ({ name: s.name, path: `/hizmetler/${s.slug}` })),
+      locale,
+    }),
+    breadcrumbSchema([{ name: t.footer.services, path: "/hizmetler" }], locale),
+  ];
+
   return (
     <main className="mx-auto max-w-7xl px-5 pt-32 pb-24 sm:px-8">
+      <JsonLd data={schema} />
       <Reveal className="max-w-3xl">
         <span className="font-mono text-xs tracking-[0.18em] text-accent">{sp.crumb}</span>
         <h1 className="mt-4 text-4xl leading-[1.05] tracking-tight sm:text-6xl">

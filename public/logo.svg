@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="VertexStarter">
+  <rect width="512" height="512" rx="112" fill="#f5f4f0"/>
+  <rect x="96" y="96" width="320" height="320" rx="72" fill="#e63b2e"/>
+  <path d="M176 184 L256 344 L336 184" fill="none" stroke="#ffffff" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
